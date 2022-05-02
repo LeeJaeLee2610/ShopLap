@@ -360,7 +360,6 @@ body{
 .thuonghieu{
     border-top: 1px solid black;
     margin-top: 10px;
-    margin-bottom: 10px;
 }
 
 .thuonghieu .p{
@@ -1102,4 +1101,29 @@ input[type=text], textarea{
 .themcate button:hover{
     background-color: gray;
     cursor: pointer;
+}
+
+.dacdiem{
+    display: flex;
+    flex-wrap: nowrap;
+}
+
+.dacdiem p:nth-child(1){
+    margin-right: 10px;
+}
+
+.gachngang{
+    text-decoration: line-through;
+}
+
+.page{
+    margin-bottom: 10px;
+}
+.product{
+    background-color: #dadada;
+    border: none;
+}
+
+.category:nth-child(2){
+    margin-top: 10px;
 }

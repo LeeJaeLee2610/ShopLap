@@ -11,13 +11,15 @@ package model;
 public class Category {
     private int cid;
     private String cname;
+    private int isCate;
 
     public Category() {
     }
 
-    public Category(int cid, String cname) {
+    public Category(int cid, String cname, int isCate) {
         this.cid = cid;
         this.cname = cname;
+        this.isCate = isCate;
     }
 
     public int getCid() {
@@ -28,6 +30,8 @@ public class Category {
         this.cid = cid;
     }
 
+
+
     public String getCname() {
         return cname;
     }
@@ -35,4 +39,14 @@ public class Category {
     public void setCname(String cname) {
         this.cname = cname;
     }
+
+    public int getIsCate() {
+        return isCate;
+    }
+
+    public void setIsCate(int isCate) {
+        this.isCate = isCate;
+    }
+    
+    
 }

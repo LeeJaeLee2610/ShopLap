@@ -35,7 +35,7 @@
                 </div>
                 <div id="btn-form">
                     <button class="btn-log" type="submit"><i class="fa-solid fa-arrow-right-to-bracket"></i> Đăng nhập</button>
-                    <button class="btn-exit"><a href="HomeController"><i class="fa-solid fa-arrow-right-from-bracket"></i> Thoát</a></button>
+                    <button class="btn-exit" type="button"><a href="HomeController"><i class="fa-solid fa-arrow-right-from-bracket"></i> Thoát</a></button>
                 </div>
             </form>
             <button class="sign-up"><a href="register.jsp"><i class="fa-solid fa-user-plus"></i> Đăng ký</a></button>

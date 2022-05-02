@@ -1,28 +1,84 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
     <servlet>
-        <servlet-name>HomeController</servlet-name>
-        <servlet-class>controller.HomeController</servlet-class>
+        <servlet-name>LoginController</servlet-name>
+        <servlet-class>controller.signin_signup.LoginController</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>LoginController</servlet-name>
-        <servlet-class>controller.LoginController</servlet-class>
+        <servlet-name>HomeController</servlet-name>
+        <servlet-class>controller.index.HomeController</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>RegisterController</servlet-name>
-        <servlet-class>controller.RegisterController</servlet-class>
+        <servlet-class>controller.signin_signup.RegisterController</servlet-class>
     </servlet>
-    <servlet-mapping>
-        <servlet-name>HomeController</servlet-name>
-        <url-pattern>/HomeController</url-pattern>
-    </servlet-mapping>
+    <servlet>
+        <servlet-name>LogoutController</servlet-name>
+        <servlet-class>controller.signin_signup.LogoutController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>CategoryLaptopController</servlet-name>
+        <servlet-class>controller.index.CategoryLaptopController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>CategoryPhukienController</servlet-name>
+        <servlet-class>controller.index.CategoryPhukienController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ProductLaptopController</servlet-name>
+        <servlet-class>controller.index.ProductLaptopController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ProductPhukienController</servlet-name>
+        <servlet-class>controller.index.ProductPhukienController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>SearchController</servlet-name>
+        <servlet-class>controller.index.SearchController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ProductController</servlet-name>
+        <servlet-class>controller.index.ProductController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginController</servlet-name>
         <url-pattern>/LoginController</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
+        <servlet-name>HomeController</servlet-name>
+        <url-pattern>/HomeController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
         <servlet-name>RegisterController</servlet-name>
         <url-pattern>/RegisterController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>LogoutController</servlet-name>
+        <url-pattern>/LogoutController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CategoryLaptopController</servlet-name>
+        <url-pattern>/CategoryLaptopController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CategoryPhukienController</servlet-name>
+        <url-pattern>/CategoryPhukienController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ProductLaptopController</servlet-name>
+        <url-pattern>/ProductLaptopController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ProductPhukienController</servlet-name>
+        <url-pattern>/ProductPhukienController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SearchController</servlet-name>
+        <url-pattern>/SearchController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ProductController</servlet-name>
+        <url-pattern>/ProductController</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

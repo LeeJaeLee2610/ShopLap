@@ -44,17 +44,17 @@
         <div class="thuonghieu">
             <div class="container">
                 <div class="row">
-                        <div class="col-md-8">
-                            <div class="p"><div class="r">&reg;</div><div class="textp">Thương hiệu được đăng kí tại miền Đông nước Anh</div></div>
+                    <div class="col-md-8">
+                        <div class="p"><div class="r">&reg;</div><div class="textp">Thương hiệu được đăng kí tại miền Đông nước Anh</div></div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="icon">
+                            <span><a href="#"><i class="fa-brands fa-youtube"></i></a></span>
+                            <span><a href="#"><i class="fa-brands fa-facebook"></i></a></span>
+                            <span><a href="#"><i class="fa-brands fa-facebook-messenger"></i></a></span>
+                            <span><a href="#"><i class="fa-brands fa-instagram"></i></a></span>
                         </div>
-                        <div class="col-md-4">
-                            <div class="icon">
-                                <span><a href="#"><i class="fa-brands fa-youtube"></i></a></span>
-                                <span><a href="#"><i class="fa-brands fa-facebook"></i></a></span>
-                                <span><a href="#"><i class="fa-brands fa-facebook-messenger"></i></a></span>
-                                <span><a href="#"><i class="fa-brands fa-instagram"></i></a></span>
-                            </div>
-                        </div>
+                    </div>
                 </div>
             </div>
         </div>

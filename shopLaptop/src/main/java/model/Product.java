@@ -4,60 +4,45 @@
  */
 package model;
 
+import java.math.BigDecimal;
+
 /**
  *
  * @author LeeJaeLee
  */
 public class Product {
     private int pid;
-    private String pname;
     private String image;
+    private String pname;
+    private double price;
+    private int slc;
+    private int daban;
     private String tittle;
     private String description;
-    private int slc;
-    private double price;
+    private int isDiscount;
+    private double discount;
     private String priceChu;
-    private int cid;
-    private int amount;
+    private double giamCon;
+    private String giamconChu;
 
     public Product() {
     }
 
-    // lay du lieu tu db
-    public Product(int pid, String pname, String image, String tittle, String description, int slc, double price, String priceChu) {
+    public Product(int pid, String image, String pname, double price, int slc, int daban, 
+            String tittle, String description, int isDiscount, double discount, String priceChu, double giamCon, String giamconChu) {
         this.pid = pid;
-        this.pname = pname;
         this.image = image;
+        this.pname = pname;
+        this.price = price;
+        this.slc = slc;
+        this.daban = daban;
         this.tittle = tittle;
         this.description = description;
-        this.slc = slc;
-        this.price = price;
+        this.isDiscount = isDiscount;
+        this.discount = discount;
         this.priceChu = priceChu;
-    }
-
-    // gio hang
-    public Product(int pid, String pname, String image, String tittle, String description, int slc, double price, String priceChu, int amount) {
-        this.pid = pid;
-        this.pname = pname;
-        this.image = image;
-        this.tittle = tittle;
-        this.description = description;
-        this.slc = slc;
-        this.price = price;
-        this.priceChu = priceChu;
-        this.amount = amount;
-    }
-
-    // insert
-    public Product(String pname, String image, String tittle, String description, int slc, double price, String priceChu, int amount) {
-        this.pname = pname;
-        this.image = image;
-        this.tittle = tittle;
-        this.description = description;
-        this.slc = slc;
-        this.price = price;
-        this.priceChu = priceChu;
-        this.amount = amount;
+        this.giamCon = giamCon;
+        this.giamconChu = giamconChu;
     }
 
     public int getPid() {
@@ -66,6 +51,16 @@ public class Product {
 
     public void setPid(int pid) {
         this.pid = pid;
+    }
+    
+    
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 
     public String getPname() {
@@ -76,14 +71,30 @@ public class Product {
         this.pname = pname;
     }
 
-    public String getImage() {
-        return image;
+    public double getPrice() {
+        return price;
     }
 
-    public void setImage(String image) {
-        this.image = image;
+    public void setPrice(double price) {
+        this.price = price;
     }
 
+    public int getSlc() {
+        return slc;
+    }
+
+    public void setSlc(int slc) {
+        this.slc = slc;
+    }
+
+    public int getDaban() {
+        return daban;
+    }
+
+    public void setDaban(int daban) {
+        this.daban = daban;
+    }
+    
     public String getTittle() {
         return tittle;
     }
@@ -100,20 +111,20 @@ public class Product {
         this.description = description;
     }
 
-    public int getSlc() {
-        return slc;
+    public int getIsDiscount() {
+        return isDiscount;
     }
 
-    public void setSlc(int slc) {
-        this.slc = slc;
+    public void setIsDiscount(int isDiscount) {
+        this.isDiscount = isDiscount;
     }
 
-    public double getPrice() {
-        return price;
+    public double getDiscount() {
+        return discount;
     }
 
-    public void setPrice(double price) {
-        this.price = price;
+    public void setDiscount(double discount) {
+        this.discount = discount;
     }
 
     public String getPriceChu() {
@@ -124,21 +135,28 @@ public class Product {
         this.priceChu = priceChu;
     }
 
-    public int getCid() {
-        return cid;
+    public double getGiamCon() {
+        return giamCon;
     }
 
-    public void setCid(int cid) {
-        this.cid = cid;
+    public void setGiamCon(double giamCon) {
+        this.giamCon = giamCon;
     }
 
-    public int getAmount() {
-        return amount;
+    public String getGiamconChu() {
+        return giamconChu;
     }
 
-    public void setAmount(int amount) {
-        this.amount = amount;
+    public void setGiamconChu(String giamconChu) {
+        this.giamconChu = giamconChu;
     }
     
-    
+    public static String doubleToSring(Double d){
+        if (d == null)
+            return null;
+        if (d.isNaN() || d.isInfinite())
+            return d.toString();
+
+        return new BigDecimal(d.toString()).stripTrailingZeros().toPlainString();
+    }
 }

@@ -27,7 +27,7 @@
         <jsp:include page="menubar.jsp"></jsp:include>
 
         <div class="container">
-            <div class="tmp"><h1>Các sản phẩm nổi bật</h1></div>
+            <div class="tmp"><h1>Các sản phẩm mới</h1></div>
         </div>
 
         <div class="slide-show">
@@ -72,7 +72,7 @@
                 </div>
             </div>
         </div>
-
+        
         <div class="container">
             <div class="tmp1"><h1>Các nhãn hàng nổi tiếng</h1></div>
         </div>
@@ -112,30 +112,20 @@
             <div class="container">
                 <div class="swiper mySwiper">
                     <div class="swiper-wrapper">
+                    <c:forEach items="${listNewP}" var='o'>
                         <div class="swiper-slide col-md-3">
                             <div class="productP">
                                 <div class="imageP">
-                                    <img src="images/demo.webp" alt="">
+                                    <img src="${o.image}" alt="">
                                 </div>
                                 <div class="infoP">
-                                    <h4><a href="#">Tên sản phẩm</a></h4>
-                                    <p>Giá</p>
+                                    <h4><a href="#">${o.pname}</a></h4>
+                                    <p>Giá: ${o.priceChu}đ</p>
                                 </div>
                                 <button class="btnP"><a href="#">Add to cart</a></button>
                             </div>
                         </div>
-                        <div class="swiper-slide col-md-3">
-                            <div class="productP">
-                                <div class="imageP">
-                                    <img src="images/demo.webp" alt="">
-                                </div>
-                                <div class="infoP">
-                                    <h4><a href="#">Tên sản phẩm</a></h4>
-                                    <p>Giá</p>
-                                </div>
-                                <button class="btnP"><a href="#">Add to cart</a></button>
-                            </div>
-                        </div>
+                    </c:forEach>
                     </div>
                     <div class="swiper-button-next"></div>
                     <div class="swiper-button-prev"></div>
@@ -152,18 +142,23 @@
             <div class="container">
                 <div class="swiper mySwiper">
                     <div class="swiper-wrapper">
+                    <c:forEach items='${listSellingP}' var='o'>
                         <div class="swiper-slide col-md-3">
                             <div class="productP">
                                 <div class="imageP">
-                                    <img src="images/demo.webp" alt="">
+                                    <img src="${o.image}" alt="">
                                 </div>
                                 <div class="infoP">
-                                    <h4><a href="#">Ten san pham</a></h4>
-                                    <p>Gia san pham</p>
+                                    <h4><a href="#">${o.pname}</a></h4>
+                                    <div class="dacdiem">
+                                        <p>Giá: ${o.priceChu}đ</p>
+                                        <p>Đã bán: ${o.daban}</p>
+                                    </div>
                                 </div>
                                 <button class="btnP"><a href="#">Add to cart</a></button>
                             </div>
                         </div>
+                    </c:forEach>
                     </div>
                     <div class="swiper-button-next"></div>
                     <div class="swiper-button-prev"></div>
@@ -180,18 +175,23 @@
             <div class="container">
                 <div class="swiper mySwiper">
                     <div class="swiper-wrapper">
+                    <c:forEach items="${listLimitedP}" var='o'>
                         <div class="swiper-slide col-md-3">
                             <div class="productP">
                                 <div class="imageP">
-                                    <img src="images/demo.webp" alt="">
+                                    <img src="${o.image}" alt="">
                                 </div>
                                 <div class="infoP">
-                                    <h4><a href="#">Ten san pham</a></h4>
-                                    <p>Gia san pham</p>
+                                    <h4><a href="#">${o.pname}</a></h4>
+                                    <div class="dacdiem">
+                                        <p>Giá: ${o.priceChu}đ</p>
+                                        <p>Còn lại: ${o.slc}</p>
+                                    </div>
                                 </div>
                                 <button class="btnP"><a href="#">Add to cart</a></button>
                             </div>
                         </div>
+                    </c:forEach>
                     </div>
                     <div class="swiper-button-next"></div>
                     <div class="swiper-button-prev"></div>
@@ -208,18 +208,24 @@
             <div class="container">
                 <div class="swiper mySwiper">
                     <div class="swiper-wrapper">
+                    <c:forEach items="${listDiscountP}" var='o'>
                         <div class="swiper-slide col-md-3">
                             <div class="productP">
                                 <div class="imageP">
-                                    <img src="images/demo.webp" alt="">
+                                    <img src="${o.image}" alt="">
                                 </div>
                                 <div class="infoP">
-                                    <h4><a href="#">Ten san pham</a></h4>
-                                    <p>Gia san pham</p>
+                                    <h4><a href="#">${o.pname}</a></h4>
+                                    <div class="dacdiem">
+                                        <p class="gachngang">Giá: ${o.priceChu}đ</p>
+                                        <p>Giảm: ${o.discount}%</p>
+                                    </div>
+                                    <p class="giamcon">Chỉ còn: ${o.giamconChu} VND</p>
                                 </div>
                                 <button class="btnP"><a href="#">Add to cart</a></button>
                             </div>
                         </div>
+                    </c:forEach>
                     </div>
                     <div class="swiper-button-next"></div>
                     <div class="swiper-button-prev"></div>
@@ -229,11 +235,9 @@
         </div>
 
         <jsp:include page="footer.jsp"></jsp:include>
-        
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-        <script src="https://code.jquery.com/jquery.min.js"></script>
         <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
         <<script src="js/app.js"></script>
     </body>

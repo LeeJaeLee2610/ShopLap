@@ -4,6 +4,7 @@
     Author     : LeeJaeLee
 --%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -19,19 +20,28 @@
                         <div class="user-menu">
                             <ul>
                                 <li><a href="#"><i class="fa-solid fa-laptop"></i>Home</a></li>
-                                <li><a href="#"><i class="fa fa-user"></i>Account</a></li>
-                                <li><a href="#"><i class="fa fa-user"></i>Product Manager</a></li>
-                                <li><a href="login.jsp"><i class="fa fa-user"></i>Login</a></li>
-                                <li><a href="#"><i class="fa fa-user"></i>Logout</a></li>
-                                <li><a href="#"><i class="fa fa-user"></i>Checkout</a></li>
+                                <c:if test="${sessionScope.ac.isAdmin != 1} && ${sessionScope.ac != null}">
+                                    <li><a href="#"><i class="fa fa-user"></i>Account</a></li>
+                                </c:if>
+                                <c:if test="${sessionScope.ac.isAdmin == 1}">
+                                    <li><a href="#"><i class="fa fa-user"></i>Product Manager</a></li>
+                                </c:if>
+                                <c:if test="${sessionScope.ac != null}">
+                                    <li><a href="login.jsp"><i class="fa fa-user"></i>Xin chào ${sessionScope.ac.username}</a></li>
+                                    <li><a href="LogoutController"><i class="fa fa-user"></i>Logout</a></li>
+                                </c:if>
+                                <c:if test="${sessionScope.ac == null}">
+                                    <li><a href="login.jsp"><i class="fa fa-user"></i>Login</a></li>
+                                </c:if>
                             </ul>
                         </div>
                     </div>
                     <div class="col-md-4">
-                        <form action="" class="search">
+                        <form action="SearchController" class="search">
+                            <input
                             <input type="text" placeholder="Search..." name="search">
                             <button type="submit"><i class="fa fa-search"></i></button>
-                          </form>
+                        </form>
                     </div>
                 </div>
             </div>

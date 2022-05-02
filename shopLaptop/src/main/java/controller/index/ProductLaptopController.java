@@ -2,26 +2,24 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
  */
-package controller;
+package controller.index;
 
-import com.google.common.hash.Hashing;
 import dao.DAO;
 import java.io.IOException;
-import java.nio.charset.StandardCharsets;
+import java.io.PrintWriter;
 import java.util.List;
-import java.util.regex.Pattern;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-import model.Account;
+import model.Category;
+import model.Product;
 
 /**
  *
  * @author LeeJaeLee
  */
-public class LoginController extends HttpServlet {
+public class ProductLaptopController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -36,50 +34,21 @@ public class LoginController extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         request.setCharacterEncoding("UTF-8");
-        HttpSession hs = request.getSession();
-        String user = request.getParameter("username");
-        String passnhap = request.getParameter("password");
-        String pass = hashPass(request.getParameter("password"));
-        String mes1 = "";
-        String mes2 = "";
-        String mes3 = "";
-        boolean ok = true;
+        String index = request.getParameter("index");
+        int tmp = Integer.parseInt(index);
         DAO dao = new DAO();
-        List<Account> listA = dao.getAllAccounts();
-        if(checkUser(user) == false){
-            ok = false;
-            mes1 = "Chỉ nhập các kí tự a-z hoặc A-Z hoặc 0-9";
-            mes3 = "Đăng nhập không thành công";
+        List<Product> listPL = dao.getAllProductsLaptop();
+        List<Product> listPTP = dao.phanTrangProductLaptop(tmp, 9);
+        int num = listPL.size();
+        int pageSize = num/9;
+        if(num%9 != 0){
+            pageSize++;
         }
-        if(user.isEmpty()){
-            ok = false;
-            mes1 = "Nhập tài khoản";
-            mes3 = "Đăng nhập không thành công";
-        }
-        if(passnhap.isEmpty()){
-            ok = false;
-            mes2 = "Nhập mật khẩu";
-            mes3 = "Đăng nhập không thành công";
-        }
-        for(Account a: listA){
-            if(a.getUsername().equalsIgnoreCase(user) && a.getPassword().equalsIgnoreCase(pass)){
-                ok = true;
-                break;
-            }
-            else{
-                ok = false;
-                mes3 = "Đăng nhập không thành công";
-            }
-        }
-        if(ok){
-            response.sendRedirect("HomeController");
-        }
-        else{
-            request.setAttribute("mes1", mes1);
-            request.setAttribute("mes2", mes2);
-            request.setAttribute("mes3", mes3);
-            request.getRequestDispatcher("login.jsp").forward(request, response);
-        }
+        List<Category> listCL = dao.getAllCategoryLaptop();
+        request.setAttribute("listCL", listCL);
+        request.setAttribute("listPTP", listPTP);
+        request.setAttribute("pageSize", pageSize);
+        request.getRequestDispatcher("product_laptop.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -120,18 +89,5 @@ public class LoginController extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
-    
-    public boolean checkUser(String username){
-        String reg = "^[a-zA-Z0-9]+";
-        return Pattern.matches(reg, username);
-    }
-    
-    public String hashPass(String password){
-        String tmp = "";
-        try {
-            tmp = Hashing.sha256().hashString(password, StandardCharsets.UTF_8).toString();
-        } catch (Exception e) {
-        }
-        return tmp;
-    }
+
 }

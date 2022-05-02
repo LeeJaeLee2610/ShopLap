@@ -19,7 +19,6 @@
             <h2>Đăng ký tài khoản</h2>
             <form action="RegisterController" id="form" method="post" name="form">
                 <p class="text-danger">${mes3}</p>
-                <p class="text-danger">${mes4}</p>
                 <div>
                     <label for="username">Tài khoản: </label>
                     <input type="text" name="username" id="username" placeholder="username"><br>
@@ -30,9 +29,14 @@
                     <input type="password" name="password" id="password" placeholder="password" onfocus="this.value = ''"><br>
                     <span class="form-message invalid">${mes2}</span><br>
                 </div>
+                <div>
+                    <label for="password1">Nhập lại mật khẩu: </label>
+                    <input type="password" name="password1" id="password1" placeholder="password" onfocus="this.value = ''"><br>
+                    <span class="form-message invalid">${mes4}</span><br>
+                </div>
                 <div id="btn-form">
                     <button class="btn-log" type="submit"><i class="fa-solid fa-user-plus"></i> Đăng ký</button>
-                    <button class="btn-exit"><a href="HomeController"><i class="fa-solid fa-arrow-right-from-bracket"></i> Thoát</a></button>
+                    <button class="btn-exit" type="button"><a href="HomeController"><i class="fa-solid fa-arrow-right-from-bracket"></i> Thoát</a></button>
                 </div>
             </form>
             <button class="sign-up"><a href="login.jsp"><i class="fa-solid fa-arrow-right-to-bracket"></i> Đăng nhập</a></button>

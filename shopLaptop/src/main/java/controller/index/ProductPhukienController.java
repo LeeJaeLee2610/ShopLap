@@ -2,26 +2,24 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
  */
-package controller;
+package controller.index;
 
-import com.google.common.hash.Hashing;
 import dao.DAO;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.nio.charset.StandardCharsets;
 import java.util.List;
-import java.util.regex.Pattern;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import model.Account;
+import model.Category;
+import model.Product;
 
 /**
  *
  * @author LeeJaeLee
  */
-public class RegisterController extends HttpServlet {
+public class ProductPhukienController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -35,46 +33,22 @@ public class RegisterController extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        response.setCharacterEncoding("UTF-8");
-        String user = request.getParameter("username");
-        String pass = request.getParameter("password");
-        String mes1 = "";
-        String mes2 = "";
-        String mes3 = "";
-        boolean ok = true;
+        request.setCharacterEncoding("UTF-8");
+        String index = request.getParameter("index");
+        int tmp = Integer.parseInt(index);
         DAO dao = new DAO();
-        List<Account> listA = dao.getAllAccounts();
-        if(checkUser(user) == false){
-            ok = false;
-            mes1 = "Chỉ nhập các kí tự a-z hoặc A-Z hoặc 0-9";
-            mes3 = "Đăng kí không thành công";
+        List<Product> listPL = dao.getAllProductsPhukien();
+        List<Product> listPTP = dao.phanTrangProductPhukien(tmp, 9);
+        int num = listPL.size();
+        int pageSize = num/9;
+        if(num%9 != 0){
+            pageSize++;
         }
-        if(user.isEmpty()){
-            ok = false;
-            mes1 = "Nhập tài khoản";
-            mes3 = "Đăng kí không thành công";
-        }
-        if(pass.isEmpty()){
-            ok = false;
-            mes2 = "Nhập mật khẩu";
-            mes3 = "Đăng kí không thành công";
-        }
-        if(trungNhau(user, listA)){
-            ok = false;
-            mes1 = "Tài khoản bị trùng";
-            mes3 = "Đăng kí không thành công";
-        }
-        if(ok){
-            dao.insert_account(user, hashPass(pass));
-            request.setAttribute("mes3", "Đăng kí thành công");
-            request.getRequestDispatcher("register.jsp").forward(request, response);
-        }
-        else{
-            request.setAttribute("mes1", mes1);
-            request.setAttribute("mes2", mes2);
-            request.setAttribute("mes3", mes3);
-            request.getRequestDispatcher("register.jsp").forward(request, response);
-        }
+        List<Category> listCL = dao.getAllCategoryPhukien();
+        request.setAttribute("listCL", listCL);
+        request.setAttribute("listPTP", listPTP);
+        request.setAttribute("pageSize", pageSize);
+        request.getRequestDispatcher("product_phukien.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -116,26 +90,4 @@ public class RegisterController extends HttpServlet {
         return "Short description";
     }// </editor-fold>
 
-    public boolean trungNhau(String username, List<Account> listA){
-        for(Account a:listA){
-            if(a.getUsername().equalsIgnoreCase(username)){
-                return true;
-            }
-        }
-        return false;
-    }
-    
-    public boolean checkUser(String username){
-        String reg = "^[a-zA-Z0-9]+";
-        return Pattern.matches(reg, username);
-    }
-    
-    public String hashPass(String password){
-        String tmp = "";
-        try {
-            tmp = Hashing.sha256().hashString(password, StandardCharsets.UTF_8).toString();
-        } catch (Exception e) {
-        }
-        return tmp;
-    }
 }

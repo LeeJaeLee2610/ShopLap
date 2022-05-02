@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
  */
-package controller;
+package controller.index;
 
 import dao.DAO;
 import java.io.IOException;
@@ -12,13 +12,15 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import model.Category;
 import model.Product;
 
 /**
  *
  * @author LeeJaeLee
  */
-public class HomeController extends HttpServlet {
+public class CategoryPhukienController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -33,13 +35,33 @@ public class HomeController extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         request.setCharacterEncoding("UTF-8");
-        try ( PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            DAO dao = new DAO();
-            List<Product> listP = dao.getNewProducts();
-            request.setAttribute("listP", listP);
-            request.getRequestDispatcher("index.jsp").forward(request, response);
+        HttpSession session = request.getSession();
+        String cid = request.getParameter("cid");
+        String index = request.getParameter("index");
+        int tmp = 0;
+        if(index == null){
+            tmp = 1;
         }
+        else{
+            tmp = Integer.parseInt(index);
+        }
+        if(cid == null){
+            cid = (String) session.getAttribute("cidne");
+        }
+        DAO dao = new DAO();
+        List<Category> listCL = dao.getAllCategoryPhukien();
+        List<Product> listPTP = dao.phanTrangProductsPhukienByCID(tmp, 9, cid);
+        List<Product> listPL = dao.getProductsPhukienByCID(cid);
+        int num = listPL.size();
+        int pageSize = num/9;
+        if(num%9 != 0){
+            pageSize++;
+        }
+        session.setAttribute("cidne", cid);
+        request.setAttribute("listCL", listCL);
+        request.setAttribute("listPTP", listPTP);
+        request.setAttribute("pageSize1", pageSize);
+        request.getRequestDispatcher("product_phukien.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

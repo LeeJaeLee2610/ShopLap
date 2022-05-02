@@ -42,7 +42,7 @@ body{
     border-bottom: 1px solid black;
 }
 
-#form #username, #form #password{
+#form #username, #form #password, #form #password1{
     width: 100%;
     border: none;
     border-radius: 10px;
