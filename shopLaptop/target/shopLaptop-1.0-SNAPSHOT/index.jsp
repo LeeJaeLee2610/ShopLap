@@ -119,10 +119,10 @@
                                     <img src="${o.image}" alt="">
                                 </div>
                                 <div class="infoP">
-                                    <h4><a href="#">${o.pname}</a></h4>
+                                    <h4><a href="DetailController?pid=${o.pid}">${o.pname}</a></h4>
                                     <p>Giá: ${o.priceChu}đ</p>
                                 </div>
-                                <button class="btnP"><a href="#">Add to cart</a></button>
+                                <button class="btnP"><a href="CartController?pid=${o.pid}">Add to cart</a></button>
                             </div>
                         </div>
                     </c:forEach>
@@ -149,13 +149,13 @@
                                     <img src="${o.image}" alt="">
                                 </div>
                                 <div class="infoP">
-                                    <h4><a href="#">${o.pname}</a></h4>
+                                    <h4><a href="DetailController?pid=${o.pid}">${o.pname}</a></h4>
                                     <div class="dacdiem">
                                         <p>Giá: ${o.priceChu}đ</p>
                                         <p>Đã bán: ${o.daban}</p>
                                     </div>
                                 </div>
-                                <button class="btnP"><a href="#">Add to cart</a></button>
+                                <button class="btnP"><a href="CartController?pid=${o.pid}">Add to cart</a></button>
                             </div>
                         </div>
                     </c:forEach>
@@ -182,13 +182,13 @@
                                     <img src="${o.image}" alt="">
                                 </div>
                                 <div class="infoP">
-                                    <h4><a href="#">${o.pname}</a></h4>
+                                    <h4><a href="DetailController?pid=${o.pid}">${o.pname}</a></h4>
                                     <div class="dacdiem">
                                         <p>Giá: ${o.priceChu}đ</p>
                                         <p>Còn lại: ${o.slc}</p>
                                     </div>
                                 </div>
-                                <button class="btnP"><a href="#">Add to cart</a></button>
+                                <button class="btnP"><a href="CartController?pid=${o.pid}">Add to cart</a></button>
                             </div>
                         </div>
                     </c:forEach>
@@ -215,14 +215,14 @@
                                     <img src="${o.image}" alt="">
                                 </div>
                                 <div class="infoP">
-                                    <h4><a href="#">${o.pname}</a></h4>
+                                    <h4><a href="DetailController?pid=${o.pid}">${o.pname}</a></h4>
                                     <div class="dacdiem">
                                         <p class="gachngang">Giá: ${o.priceChu}đ</p>
                                         <p>Giảm: ${o.discount}%</p>
                                     </div>
                                     <p class="giamcon">Chỉ còn: ${o.giamconChu} VND</p>
                                 </div>
-                                <button class="btnP"><a href="#">Add to cart</a></button>
+                                <button class="btnP"><a href="CartController?pid=${o.pid}">Add to cart</a></button>
                             </div>
                         </div>
                     </c:forEach>

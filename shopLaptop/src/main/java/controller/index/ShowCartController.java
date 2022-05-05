@@ -7,16 +7,21 @@ package controller.index;
 import dao.DAO;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.List;
 import javax.servlet.ServletException;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import model.Product;
 
 /**
  *
  * @author LeeJaeLee
  */
-public class SearchController extends HttpServlet {
+public class ShowCartController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -30,10 +35,29 @@ public class SearchController extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        request.setCharacterEncoding("UTF-8");
-        String search = request.getParameter("search");
+        Cookie a[] = request.getCookies();
+        List<Product> list = new ArrayList<>();
         DAO dao = new DAO();
-        
+        for(Cookie c:a){
+            if(c.getName().equals("pid")){
+                String txt[] = c.getValue().split("/");
+                for(String s:txt){
+                    list.add(dao.getProductByPID(s));
+                }
+            }
+        }
+        for (int i = 0; i < list.size(); i++) {
+            for (int j = i+1; j < list.size(); j++) {
+                if(list.get(i).getPid() == list.get(j).getPid()){
+                    list.remove(j);
+                    j--;
+                }
+            }
+        }
+        HttpSession session = request.getSession();
+        session.setAttribute("tmp", list.size());
+        request.setAttribute("listCart", list);
+        request.getRequestDispatcher("cart.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

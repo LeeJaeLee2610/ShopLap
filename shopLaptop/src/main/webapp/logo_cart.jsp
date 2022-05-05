@@ -23,9 +23,9 @@
                     <div class="col-sm-2">
                         <div class="cart-show">
                             <div>
-                                <a href="#">
+                                <a href="ShowCartController">
                                     <img src="images/shopping-cart (2).png" alt="">
-                                    <span>0</span>
+                                    <span>${sessionScope.tmp}</span>
                                 </a>
                                 <p>Giỏ hàng</p> 
                             </div>

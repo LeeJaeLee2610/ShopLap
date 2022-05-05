@@ -4,6 +4,7 @@
     Author     : LeeJaeLee
 --%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -25,145 +26,54 @@
         <!-- Menu Bar -->
         <jsp:include page="menubar.jsp"></jsp:include>
 
-        <div class="cart">
-            <div class="container">
-                <div class="table">
-                    <div class="head">
-                        <div>STT</div>
-                        <div>Tên sản phẩm</div>
-                        <div>Giá</div>
-                        <div>Số lượng</div>
-                        <div>Tổng</div>
-                        <div>Xóa</div>
-                    </div>
-                    <div class="about">
-                        <div class="tt">1</div>
-                        <div class="ten">
-                            <div><img src="images/demo.webp" alt=""></div>
-                            <div><a href="#"><p>[Mới 100%] Asus ROG Strix G15 G513IH-HN015W (Ryzen 7-4800H, 8GB, 512GB, GTX 1650, 15.6'' FHD 144Hz)</p></a></div>
+        <form action="QuantityController">
+            <div class="cart">
+                <div class="container">
+                    <div class="table">
+                        <div class="head">
+                            <div>STT</div>
+                            <div>Tên sản phẩm</div>
+                            <div>Giá</div>
+                            <div>Số lượng</div>
+                            <div>Tổng</div>
+                            <div>Xóa</div>
                         </div>
-                        <div class="gia">22490000</div>
-                        <div class="sl">
-                            <span><a href="#">-</a></span>
-                            <p>100</p>
-                            <span><a href="#">+</a></span>
+                    <c:forEach items="${listCart}" var="o">
+                        <div class="about">
+                            <div class="tt">1</div>
+                            <div class="ten">
+                                <div><img src="${o.image}" alt=""></div>
+                                <div><a href="DetailController?pid=${o.pid}"><p>${o.pname}</p></a></div>
+                            </div>
+                            <div class="gia">${o.giamconChu}đ</div>
+                            <div class="sl">
+                                <span class="tru">-</span>
+                                <input type="text" value="1" class="quantity" name="quantity">
+                                <span class="cong">+</span>
+                            </div>
+                            <div>
+                                <input type="text" value="${o.giamconChu}" class="tong" name="tong" readonly>
+                            </div>
+                            <div>
+                                <a href="RemoveController?pid=${o.pid}"><img src="images/icon_cart_del.png" alt=""></a>
+                            </div>
                         </div>
-                        <div>
-                            <h5>0 VND</h5>
+                    </c:forEach>
+                        <div class="total">
+                            <div><strong>Tổng cộng: </strong><input type="text" value="100.000.000.000" class="sum_all" name="sum_all" readonly>VND</div>
                         </div>
-                        <div>
-                            <a href="#"><img src="images/icon_cart_del.png" alt=""></a>
-                        </div>
-                    </div>
-                    <div class="about">
-                        <div class="tt">1</div>
-                        <div class="ten">
-                            <div><img src="images/demo.webp" alt=""></div>
-                            <div><a href="#"><p>[Mới 100%] Asus ROG Strix G15 G513IH-HN015W (Ryzen 7-4800H, 8GB, 512GB, GTX 1650, 15.6'' FHD 144Hz)</p></a></div>
-                        </div>
-                        <div>22.490.000đ</div>
-                        <div class="sl">
-                            <span><a href="#">-</a></span>
-                            <p>100</p>
-                            <span><a href="#">+</a></span>
-                        </div>
-                        <div>
-                            <h5>0 VND</h5>
-                        </div>
-                        <div>
-                            <a href="#"><img src="images/icon_cart_del.png" alt=""></a>
-                        </div>
-                    </div>
-                    <div class="about">
-                        <div class="tt">1</div>
-                        <div class="ten">
-                            <div><img src="images/demo.webp" alt=""></div>
-                            <div><a href="#"><p>[Mới 100%] Asus ROG Strix G15 G513IH-HN015W (Ryzen 7-4800H, 8GB, 512GB, GTX 1650, 15.6'' FHD 144Hz)</p></a></div>
-                        </div>
-                        <div>22.490.000đ</div>
-                        <div class="sl">
-                            <span><a href="#">-</a></span>
-                            <p>100</p>
-                            <span><a href="#">+</a></span>
-                        </div>
-                        <div>
-                            <h5>0 VND</h5>
-                        </div>
-                        <div>
-                            <a href="#"><img src="images/icon_cart_del.png" alt=""></a>
-                        </div>
-                    </div>
-                    <div class="total">
-                        <div><strong>Tổng cộng: </strong>1000000000 VND</div>
                     </div>
                 </div>
             </div>
-        </div>
 
-        <div class="container">
-            <div class="sangphai">
-                <button class="tieptuc"><a href="#">Tiếp tục mua hàng</a></button>
-                <button class="muahang">Tiến hành mua hàng</button>
-            </div>
-        </div>
-
-        <form action="" id="form">
-            <div class="thongtinkhachhang hide">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-7">
-                            <div class="phan1">
-                                <h5>1. Khách hàng khai báo thông tin</h5>
-                                <div>
-                                    <strong>Thông tin người mua</strong>
-                                    <p>Những phần đánh dấu (*) là bắt buộc</p>
-                                    <div>
-                                        <label for="taikhoan">Tài khoản*</label>
-                                        <input type="text" id="taikhoan" name="username" placeholder="Tài khoản"><br>
-                                        <span class="form-message">Họ tên không được để trống</span>
-                                    </div>
-                                    <div>
-                                        <label for="matkhau">Mật khẩu*</label>
-                                        <input type="password"id="matkhau" name="password" placeholder="Mật khẩu"><br>
-                                        <span class="form-message">Sai</span>
-                                    </div>
-                                    <div>
-                                        <label for="hoten">Họ tên*</label>
-                                        <input type="text" id="hoten" name="hoten" placeholder="Họ tên"><br>
-                                        <span class="form-message">Sai</span>
-                                    </div>
-                                    <div>
-                                        <label for="phone">Điện thoại*</label>
-                                        <input type="text" id="phone" name="phone" placeholder="Điện thoại"><br>
-                                        <span class="form-message">Sai</span>
-                                    </div> 
-                                    <div>
-                                        <label for="diachi">Địa chỉ*</label>
-                                        <input type="text" id="diachi" name="diachi" placeholder="Địa chỉ"><br>
-                                        <span class="form-message">Sai</span>
-                                    </div>
-                                    <div>
-                                        <label for="email">Email</label>
-                                        <input type="email" id="email" name="email" placeholder="Email"><br>
-                                        <span class="form-message">Sai</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-5">
-                            <div class="phan2">
-                                <h5>2. Ghi chú cho đơn hàng</h5><br>
-                                <textarea name="ghichu" id="ghichu" rows="10" placeholder="Ghi chú"></textarea>
-                            </div>
-                            <div class="phan3">
-                                <button><a href="#">Chốt đơn</a></button>
-                            </div>
-                        </div>
-                    </div>
+            <div class="container">
+                <div class="sangphai">
+                    <button type="button" class="tieptuc"><a href="ProductController?index=1">Tiếp tục mua hàng</a></button>
+                    <button type="submit" class="muahang">Tiến hành mua hàng</button>
                 </div>
             </div>
         </form>
-
+        
         <div class="container">
             <div class="tmp2"><h1>Các sản phẩm khác</h1></div>
         </div>
@@ -213,4 +123,23 @@
         <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
         <script src="js/app.js"></script>
     </body>
+    <script>
+        const sl = document.querySelectorAll(".sl");
+        
+        sl.forEach((node) => {
+            const itemCount = node.querySelector(".quantity");
+            const add = node.querySelector(".cong");
+            const remove = node.querySelector(".tru");
+
+            add.addEventListener("click", () => {
+                itemCount.value = parseInt(itemCount.value) + 1;
+            });
+
+            remove.addEventListener("click", () => {
+                if(parseInt(itemCount.value) > 0){
+                    itemCount.value = parseInt(itemCount.value) - 1;
+                }
+            });
+        });
+    </script>
 </html>

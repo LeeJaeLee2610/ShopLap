@@ -554,17 +554,17 @@ body{
     display: flex;
 }
 
-.thongso .hang{
+.thongso .hang div{
     border: 1px solid black;
 }
 
 .thongso .hang div:first-child{
-    flex-basis: 25%;
+    flex-basis: 30%;
     text-align: center;
 }
 
 .thongso .hang div:last-child{
-    border-left: 1px solid black;
+    flex-basis: 70%;
     padding-left: 5px;
     padding-right: 5px;
 }
@@ -681,8 +681,15 @@ body{
 
 .sl span{
     padding: 5px;
-    margin-bottom: 20px;
-    font-size: 20px;
+}
+
+.sl input{
+    width: 50px;
+    height: 30px;
+    text-align: center;
+    border: none;
+    margin-left: 5px;
+    margin-right: 5px;
 }
 
 .ten{
@@ -1126,4 +1133,42 @@ input[type=text], textarea{
 
 .category:nth-child(2){
     margin-top: 10px;
+}
+
+.info strong:hover a{
+    color: pink;
+    cursor: pointer;
+}
+
+.gachngang1{
+    text-decoration: line-through;
+    font-size: 15px;
+    margin-left: 10px;
+}
+
+.tru:hover, .cong:hover{
+    cursor: pointer;
+    color: pink;
+}
+
+.tong{
+    border: none;
+    text-align: center;
+}
+
+form button:focus {
+    outline:0;
+}
+
+form input:focus{
+    outline:0;
+}
+
+.sum_all{
+    text-align: end;
+    border: none;
+}
+
+.sum_all:focus{
+    outline: none;
 }

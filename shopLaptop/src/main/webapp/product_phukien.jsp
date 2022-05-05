@@ -31,7 +31,7 @@
                 <div class="row">
                     <div class="col-md-3">
                         <div class="category">
-                            <h3>Hãng sản xuất</h3>
+                            <h3>Phụ kiện</h3>
                         <c:forEach items='${listCL}' var='o'>
                             <h5><a href="CategoryPhukienController?cid=${o.cid}">${o.cname}</a></h5>
                         </c:forEach>
@@ -46,7 +46,7 @@
                                         <img src="${o.image}" alt="">
                                     </div>
                                     <div class="info">
-                                        <strong><a href="#">${o.pname}</a></strong>
+                                        <strong><a href="DetailController?pid=${o.pid}">${o.pname}</a></strong>
                                         <c:if test="${o.isDiscount == 0}">
                                             <c:choose>
                                                 <c:when test="${o.slc == 0}">
@@ -77,7 +77,7 @@
                                             </c:choose>
                                         </c:if>
                                     </div>
-                                    <button class="btn"><a href="#">Add to cart</a></button>
+                                    <button class="btn"><a href="CartController?pid=${o.pid}">Add to cart</a></button>
                                 </div>
                             </div>
                         </c:forEach>

@@ -4,6 +4,7 @@
     Author     : LeeJaeLee
 --%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -32,13 +33,13 @@
                         <div class="category">
                             <h3>Laptop</h3>
                         <c:forEach items='${listCL}' var='o'>
-                            <h5><a href="CategoryLaptopController?cid=${o.cid}">${o.cname}</a></h5>
+                            <h5><a href="CategoryController?cid=${o.cid}">${o.cname}</a></h5>
                         </c:forEach>
                         </div>
                         <div class="category">
                             <h3>Phụ kiện</h3>
-                        <c:forEach items='${listCL}' var='o'>
-                            <h5><a href="CategoryLaptopController?cid=${o.cid}">${o.cname}</a></h5>
+                        <c:forEach items='${listCP}' var='o'>
+                            <h5><a href="CategoryController?cid=${o.cid}">${o.cname}</a></h5>
                         </c:forEach>
                         </div>
                     </div>
@@ -51,7 +52,7 @@
                                         <img src="${o.image}" alt="">
                                     </div>
                                     <div class="info">
-                                        <strong><a href="#">${o.pname}</a></strong>
+                                        <strong><a href="DetailController?pid=${o.pid}">${o.pname}</a></strong>
                                         <c:if test="${o.isDiscount == 0}">
                                             <c:choose>
                                                 <c:when test="${o.slc == 0}">
@@ -82,7 +83,7 @@
                                             </c:choose>
                                         </c:if>
                                     </div>
-                                    <button class="btn"><a href="#">Add to cart</a></button>
+                                    <button class="btn"><a href="CartController?pid=${o.pid}">Add to cart</a></button>
                                 </div>
                             </div>
                         </c:forEach>
@@ -98,10 +99,13 @@
                     <div class="pagination">
                         <a href="#">&laquo;</a>
                     <c:forEach begin="1" end="${pageSize}" var="i">
-                        <a href="ProductLaptopController?index=${i}">${i}</a>
+                        <a href="ProductController?index=${i}">${i}</a>
                     </c:forEach>
                     <c:forEach begin="1" end="${pageSize1}" var="i">
-                        <a href="CategoryLaptopController?index=${i}">${i}</a>
+                        <a href="CategoryController?index=${i}">${i}</a>
+                    </c:forEach>
+                    <c:forEach begin="1" end="${pageSize2}" var="i">
+                        <a href="SearchController1?index=${i}">${i}</a>
                     </c:forEach>
                         <a href="#">&raquo;</a>
                      </div> 

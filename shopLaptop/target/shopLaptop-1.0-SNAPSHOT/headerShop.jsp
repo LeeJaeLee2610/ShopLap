@@ -20,8 +20,10 @@
                         <div class="user-menu">
                             <ul>
                                 <li><a href="#"><i class="fa-solid fa-laptop"></i>Home</a></li>
-                                <c:if test="${sessionScope.ac.isAdmin != 1} && ${sessionScope.ac != null}">
-                                    <li><a href="#"><i class="fa fa-user"></i>Account</a></li>
+                                <c:if test="${sessionScope.ac.isAdmin == 0}">
+                                    <c:if test="${sessionScope.ac != null}">
+                                        <li><a href="AccountController?id=${sessionScope.ac.id}"><i class="fa fa-user"></i>Account</a></li>
+                                    </c:if>
                                 </c:if>
                                 <c:if test="${sessionScope.ac.isAdmin == 1}">
                                     <li><a href="#"><i class="fa fa-user"></i>Product Manager</a></li>
@@ -37,8 +39,7 @@
                         </div>
                     </div>
                     <div class="col-md-4">
-                        <form action="SearchController" class="search">
-                            <input
+                        <form action="SearchController1" class="search" method="get">
                             <input type="text" placeholder="Search..." name="search">
                             <button type="submit"><i class="fa fa-search"></i></button>
                         </form>

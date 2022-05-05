@@ -24,12 +24,24 @@ public class Product {
     private String priceChu;
     private double giamCon;
     private String giamconChu;
-
+    private String tenmay;
+    private String ocung;
+    private String cpu;
+    private String ram;
+    private String cardDH;
+    private String manhinh;
+    private String trongluong;
+    private String hdh;
+    private String xuatxu;
+    private String tenpk;
+    private String loai;
+    private int isCate;
+    
     public Product() {
     }
 
     public Product(int pid, String image, String pname, double price, int slc, int daban, 
-            String tittle, String description, int isDiscount, double discount, String priceChu, double giamCon, String giamconChu) {
+            String tittle, String description, int isDiscount, double discount, String priceChu, double giamCon, String giamconChu, int isCate) {
         this.pid = pid;
         this.image = image;
         this.pname = pname;
@@ -43,12 +55,33 @@ public class Product {
         this.priceChu = priceChu;
         this.giamCon = giamCon;
         this.giamconChu = giamconChu;
+        this.isCate = isCate;
     }
 
+    public Product(int pid, String tenmay, String ocung, String cpu, String ram, String cardDH, String manhinh, String trongluong, String hdh) {
+        this.pid = pid;
+        this.tenmay = tenmay;
+        this.ocung = ocung;
+        this.cpu = cpu;
+        this.ram = ram;
+        this.cardDH = cardDH;
+        this.manhinh = manhinh;
+        this.trongluong = trongluong;
+        this.hdh = hdh;
+    }
+
+    public Product(int pid, String xuatxu, String tenpk, String loai) {
+        this.pid = pid;
+        this.xuatxu = xuatxu;
+        this.tenpk = tenpk;
+        this.loai = loai;
+    }
+    
+    
     public int getPid() {
         return pid;
     }
-
+    
     public void setPid(int pid) {
         this.pid = pid;
     }
@@ -150,6 +183,104 @@ public class Product {
     public void setGiamconChu(String giamconChu) {
         this.giamconChu = giamconChu;
     }
+
+    public int getIsCate() {
+        return isCate;
+    }
+
+    public void setIsCate(int isCate) {
+        this.isCate = isCate;
+    }
+
+    public String getTenmay() {
+        return tenmay;
+    }
+
+    public void setTenmay(String tenmay) {
+        this.tenmay = tenmay;
+    }
+
+    public String getOcung() {
+        return ocung;
+    }
+
+    public void setOcung(String ocung) {
+        this.ocung = ocung;
+    }
+
+    public String getCpu() {
+        return cpu;
+    }
+
+    public void setCpu(String cpu) {
+        this.cpu = cpu;
+    }
+
+    public String getRam() {
+        return ram;
+    }
+
+    public void setRam(String ram) {
+        this.ram = ram;
+    }
+
+    public String getCardDH() {
+        return cardDH;
+    }
+
+    public void setCardDH(String cardDH) {
+        this.cardDH = cardDH;
+    }
+
+    public String getManhinh() {
+        return manhinh;
+    }
+
+    public void setManhinh(String manhinh) {
+        this.manhinh = manhinh;
+    }
+
+    public String getTrongluong() {
+        return trongluong;
+    }
+
+    public void setTrongluong(String trongluong) {
+        this.trongluong = trongluong;
+    }
+
+    public String getHdh() {
+        return hdh;
+    }
+
+    public void setHdh(String hdh) {
+        this.hdh = hdh;
+    }
+
+    public String getXuatxu() {
+        return xuatxu;
+    }
+
+    public void setXuatxu(String xuatxu) {
+        this.xuatxu = xuatxu;
+    }
+
+    public String getTenpk() {
+        return tenpk;
+    }
+
+    public void setTenpk(String tenpk) {
+        this.tenpk = tenpk;
+    }
+
+    public String getLoai() {
+        return loai;
+    }
+
+    public void setLoai(String loai) {
+        this.loai = loai;
+    }
+    
+    
     
     public static String doubleToSring(Double d){
         if (d == null)

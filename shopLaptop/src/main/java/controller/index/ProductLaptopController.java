@@ -38,7 +38,7 @@ public class ProductLaptopController extends HttpServlet {
         int tmp = Integer.parseInt(index);
         DAO dao = new DAO();
         List<Product> listPL = dao.getAllProductsLaptop();
-        List<Product> listPTP = dao.phanTrangProductLaptop(tmp, 9);
+        List<Product> listPTP = dao.phanTrangProductsLaptop(tmp, 9);
         int num = listPL.size();
         int pageSize = num/9;
         if(num%9 != 0){

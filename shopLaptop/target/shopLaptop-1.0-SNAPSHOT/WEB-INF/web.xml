@@ -33,12 +33,40 @@
         <servlet-class>controller.index.ProductPhukienController</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>SearchController</servlet-name>
-        <servlet-class>controller.index.SearchController</servlet-class>
-    </servlet>
-    <servlet>
         <servlet-name>ProductController</servlet-name>
         <servlet-class>controller.index.ProductController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>CategoryController</servlet-name>
+        <servlet-class>controller.index.CategoryController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>SearchController1</servlet-name>
+        <servlet-class>controller.index.SearchController1</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>DetailController</servlet-name>
+        <servlet-class>controller.index.DetailController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ShowCartController</servlet-name>
+        <servlet-class>controller.index.ShowCartController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>CartController</servlet-name>
+        <servlet-class>controller.index.CartController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AccountController</servlet-name>
+        <servlet-class>controller.index.AccountController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>QuantityController</servlet-name>
+        <servlet-class>controller.index.QuantityController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>RemoveController</servlet-name>
+        <servlet-class>controller.index.RemoveController</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>LoginController</servlet-name>
@@ -73,12 +101,40 @@
         <url-pattern>/ProductPhukienController</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>SearchController</servlet-name>
-        <url-pattern>/SearchController</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
         <servlet-name>ProductController</servlet-name>
         <url-pattern>/ProductController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CategoryController</servlet-name>
+        <url-pattern>/CategoryController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SearchController1</servlet-name>
+        <url-pattern>/SearchController1</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DetailController</servlet-name>
+        <url-pattern>/DetailController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ShowCartController</servlet-name>
+        <url-pattern>/ShowCartController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CartController</servlet-name>
+        <url-pattern>/CartController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AccountController</servlet-name>
+        <url-pattern>/AccountController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>QuantityController</servlet-name>
+        <url-pattern>/QuantityController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>RemoveController</servlet-name>
+        <url-pattern>/RemoveController</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

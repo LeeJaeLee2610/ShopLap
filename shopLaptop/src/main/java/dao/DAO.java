@@ -20,7 +20,55 @@ import model.Product;
  *
  * @author LeeJaeLee
  */
-public class DAO {
+public class DAO {    
+    public Product getProductByPID(String pid){
+        String sql = "select * from product where pid = ?";
+        try {
+            Connection con = DatabaseHelper.getConnection();
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, pid);
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()){
+                double tmp = rs.getDouble(4) - rs.getDouble(4) * (rs.getDouble(10) / 100);
+                return new Product(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getDouble(4),
+                        rs.getInt(5), rs.getInt(6), rs.getString(7), rs.getString(8), rs.getInt(9), rs.getDouble(10),
+                        formatDouble(doubleToSring(rs.getDouble(4))), tmp, formatDouble(doubleToSring(tmp)), rs.getInt(12));
+            }
+        } catch (Exception e) {
+        }
+        return null;
+    }
+    
+    public Product infoLaptop(String pid){
+        String sql = "select * from info_laptop where pid = ?";
+        try {
+            Connection con = DatabaseHelper.getConnection();
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, pid);
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()){
+                return new Product(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9));
+            }
+        } catch (Exception e) {
+        }
+        return null;
+    }
+    
+    public Product infoPhukien(String pid){
+        String sql = "select * from info_phukien where pid = ?";
+        try {
+            Connection con = DatabaseHelper.getConnection();
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, pid);
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()){
+                return new Product(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4));
+            }
+        } catch (Exception e) {
+        }
+        return null;
+    }
+    
     public List<Category> getAllCategoryLaptop(){
         String sql = "select * from category where isCate = 1";
         List<Category> list = new ArrayList();
@@ -63,7 +111,7 @@ public class DAO {
                 double tmp = rs.getDouble(4) - rs.getDouble(4) * (rs.getDouble(10) / 100);
                 list.add(new Product(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getDouble(4),
                         rs.getInt(5), rs.getInt(6), rs.getString(7), rs.getString(8), rs.getInt(9), rs.getDouble(10),
-                        formatDouble(doubleToSring(rs.getDouble(4))), tmp, formatDouble(doubleToSring(tmp))));
+                        formatDouble(doubleToSring(rs.getDouble(4))), tmp, formatDouble(doubleToSring(tmp)), rs.getInt(12)));
             }
         } catch (Exception e) {
         }
@@ -82,7 +130,7 @@ public class DAO {
                 double tmp = rs.getDouble(4) - rs.getDouble(4) * (rs.getDouble(10) / 100);
                 list.add(new Product(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getDouble(4),
                         rs.getInt(5), rs.getInt(6), rs.getString(7), rs.getString(8), rs.getInt(9), rs.getDouble(10),
-                        formatDouble(doubleToSring(rs.getDouble(4))), tmp, formatDouble(doubleToSring(tmp))));
+                        formatDouble(doubleToSring(rs.getDouble(4))), tmp, formatDouble(doubleToSring(tmp)), rs.getInt(12)));
             }
         } catch (Exception e) {
         }
@@ -107,7 +155,7 @@ public class DAO {
                 double tmp = rs.getDouble(5) - rs.getDouble(5) * (rs.getDouble(11) / 100);
                 list.add(new Product(rs.getInt(2), rs.getString(3), rs.getString(4), rs.getDouble(5),
                         rs.getInt(6), rs.getInt(7), rs.getString(8), rs.getString(9), rs.getInt(10), rs.getDouble(11),
-                        formatDouble(doubleToSring(rs.getDouble(5))), tmp, formatDouble(doubleToSring(tmp))));
+                        formatDouble(doubleToSring(rs.getDouble(5))), tmp, formatDouble(doubleToSring(tmp)), rs.getInt(13)));
             }
         } catch (Exception e) {
         }
@@ -132,7 +180,7 @@ public class DAO {
                 double tmp = rs.getDouble(5) - rs.getDouble(5) * (rs.getDouble(11) / 100);
                 list.add(new Product(rs.getInt(2), rs.getString(3), rs.getString(4), rs.getDouble(5),
                         rs.getInt(6), rs.getInt(7), rs.getString(8), rs.getString(9), rs.getInt(10), rs.getDouble(11),
-                        formatDouble(doubleToSring(rs.getDouble(5))), tmp, formatDouble(doubleToSring(tmp))));
+                        formatDouble(doubleToSring(rs.getDouble(5))), tmp, formatDouble(doubleToSring(tmp)), rs.getInt(13)));
             }
         } catch (Exception e) {
         }
@@ -151,7 +199,26 @@ public class DAO {
                 double tmp = rs.getDouble(4) - rs.getDouble(4) * (rs.getDouble(10) / 100);
                 list.add(new Product(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getDouble(4),
                         rs.getInt(5), rs.getInt(6), rs.getString(7), rs.getString(8), rs.getInt(9), rs.getDouble(10),
-                        formatDouble(doubleToSring(rs.getDouble(4))), tmp, formatDouble(doubleToSring(tmp))));
+                        formatDouble(doubleToSring(rs.getDouble(4))), tmp, formatDouble(doubleToSring(tmp)), rs.getInt(12)));
+            }
+        } catch (Exception e) {
+        }
+        return list;
+    }
+    
+    public List<Product> getNewProducts1() {
+        List<Product> list = new ArrayList();
+        String sql = "select top 6 * from product where isCate = 0\n"
+                + "order by pid desc";
+        try {
+            Connection con = DatabaseHelper.getConnection();
+            PreparedStatement ps = con.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                double tmp = rs.getDouble(4) - rs.getDouble(4) * (rs.getDouble(10) / 100);
+                list.add(new Product(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getDouble(4),
+                        rs.getInt(5), rs.getInt(6), rs.getString(7), rs.getString(8), rs.getInt(9), rs.getDouble(10),
+                        formatDouble(doubleToSring(rs.getDouble(4))), tmp, formatDouble(doubleToSring(tmp)), rs.getInt(12)));
             }
         } catch (Exception e) {
         }
@@ -170,7 +237,7 @@ public class DAO {
                 double tmp = rs.getDouble(4) - rs.getDouble(4) * (rs.getDouble(10) / 100);
                 list.add(new Product(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getDouble(4),
                         rs.getInt(5), rs.getInt(6), rs.getString(7), rs.getString(8), rs.getInt(9), rs.getDouble(10),
-                        formatDouble(doubleToSring(rs.getDouble(4))), tmp, formatDouble(doubleToSring(tmp))));
+                        formatDouble(doubleToSring(rs.getDouble(4))), tmp, formatDouble(doubleToSring(tmp)), rs.getInt(12)));
             }
         } catch (Exception e) {
         }
@@ -189,7 +256,7 @@ public class DAO {
                 double tmp = rs.getDouble(4) - rs.getDouble(4) * (rs.getDouble(10) / 100);
                 list.add(new Product(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getDouble(4),
                         rs.getInt(5), rs.getInt(6), rs.getString(7), rs.getString(8), rs.getInt(9), rs.getDouble(10),
-                        formatDouble(doubleToSring(rs.getDouble(4))), tmp, formatDouble(doubleToSring(tmp))));
+                        formatDouble(doubleToSring(rs.getDouble(4))), tmp, formatDouble(doubleToSring(tmp)), rs.getInt(12)));
             }
         } catch (Exception e) {
         }
@@ -207,7 +274,7 @@ public class DAO {
                 double tmp = rs.getDouble(4) - rs.getDouble(4) * (rs.getDouble(10) / 100);
                 list.add(new Product(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getDouble(4),
                         rs.getInt(5), rs.getInt(6), rs.getString(7), rs.getString(8), rs.getInt(9), rs.getDouble(10),
-                        formatDouble(doubleToSring(rs.getDouble(4))), tmp, formatDouble(doubleToSring(tmp))));
+                        formatDouble(doubleToSring(rs.getDouble(4))), tmp, formatDouble(doubleToSring(tmp)),rs.getInt(12)));
             }
         } catch (Exception e) {
         }
@@ -257,6 +324,92 @@ public class DAO {
         return null;
     }
     
+    public List<Product> getAllProducts(){
+        String sql = "select * from product";
+        List<Product> list = new ArrayList<>();
+        try {
+            Connection con = DatabaseHelper.getConnection();
+            PreparedStatement ps = con.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                double tmp = rs.getDouble(4) - rs.getDouble(4) * (rs.getDouble(10) / 100);
+                list.add(new Product(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getDouble(4),
+                        rs.getInt(5), rs.getInt(6), rs.getString(7), rs.getString(8), rs.getInt(9), rs.getDouble(10),
+                        formatDouble(doubleToSring(rs.getDouble(4))), tmp, formatDouble(doubleToSring(tmp)), rs.getInt(12)));
+            }
+        } catch (Exception e) {
+        }
+        return list;
+    }
+    
+    public List<Product> getAllProductsByCID(String cid){
+        String sql = "select * from product where cid = ?";
+        List<Product> list = new ArrayList<>();
+        try {
+            Connection con = DatabaseHelper.getConnection();
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, cid);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                double tmp = rs.getDouble(4) - rs.getDouble(4) * (rs.getDouble(10) / 100);
+                list.add(new Product(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getDouble(4),
+                        rs.getInt(5), rs.getInt(6), rs.getString(7), rs.getString(8), rs.getInt(9), rs.getDouble(10),
+                        formatDouble(doubleToSring(rs.getDouble(4))), tmp, formatDouble(doubleToSring(tmp)), rs.getInt(12)));
+            }
+        } catch (Exception e) {
+        }
+        return list;
+    }
+    
+    public List<Product> phanTrangAllProducts(int index, int size){
+        String sql = "with x as(select ROW_NUMBER() over (order by pid asc) as r,\n" +
+            "* from product)\n" +
+            "select * from x where r between ?*?-8 and ?*?";
+        List<Product> list = new ArrayList<>();
+        try {
+            Connection con = DatabaseHelper.getConnection();
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, index);
+            ps.setInt(2, size);
+            ps.setInt(3, index);
+            ps.setInt(4, size);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                double tmp = rs.getDouble(5) - rs.getDouble(5) * (rs.getDouble(11) / 100);
+                list.add(new Product(rs.getInt(2), rs.getString(3), rs.getString(4), rs.getDouble(5),
+                        rs.getInt(6), rs.getInt(7), rs.getString(8), rs.getString(9), rs.getInt(10), rs.getDouble(11),
+                        formatDouble(doubleToSring(rs.getDouble(5))), tmp, formatDouble(doubleToSring(tmp)),rs.getInt(13)));
+            }
+        } catch (Exception e) {
+        }
+        return list;
+    }
+    
+    public List<Product> phanTrangAllProductsByCID(int index, int size, String cid){
+        String sql = "with x as(select ROW_NUMBER() over (order by pid asc) as r,\n" +
+            "* from product where cid = ?)\n" +
+            "select * from x where r between ?*?-8 and ?*?";
+        List<Product> list = new ArrayList<>();
+        try {
+            Connection con = DatabaseHelper.getConnection();
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, cid);
+            ps.setInt(2, index);
+            ps.setInt(3, size);
+            ps.setInt(4, index);
+            ps.setInt(5, size);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                double tmp = rs.getDouble(5) - rs.getDouble(5) * (rs.getDouble(11) / 100);
+                list.add(new Product(rs.getInt(2), rs.getString(3), rs.getString(4), rs.getDouble(5),
+                        rs.getInt(6), rs.getInt(7), rs.getString(8), rs.getString(9), rs.getInt(10), rs.getDouble(11),
+                        formatDouble(doubleToSring(rs.getDouble(5))), tmp, formatDouble(doubleToSring(tmp)), rs.getInt(13)));
+            }
+        } catch (Exception e) {
+        }
+        return list;
+    }
+    
     public List<Product> getProductsBySearch(String search){
         String sql = "select * from product where [pname] like ?";
         List<Product> list = new ArrayList<>();
@@ -269,7 +422,7 @@ public class DAO {
                 double tmp = rs.getDouble(4) - rs.getDouble(4) * (rs.getDouble(10) / 100);
                 list.add(new Product(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getDouble(4),
                         rs.getInt(5), rs.getInt(6), rs.getString(7), rs.getString(8), rs.getInt(9), rs.getDouble(10),
-                        formatDouble(doubleToSring(rs.getDouble(4))), tmp, formatDouble(doubleToSring(tmp))));
+                        formatDouble(doubleToSring(rs.getDouble(4))), tmp, formatDouble(doubleToSring(tmp)), rs.getInt(12)));
             }
         } catch (Exception e) {
         }
@@ -294,7 +447,7 @@ public class DAO {
                 double tmp = rs.getDouble(5) - rs.getDouble(5) * (rs.getDouble(11) / 100);
                 list.add(new Product(rs.getInt(2), rs.getString(3), rs.getString(4), rs.getDouble(5),
                         rs.getInt(6), rs.getInt(7), rs.getString(8), rs.getString(9), rs.getInt(10), rs.getDouble(11),
-                        formatDouble(doubleToSring(rs.getDouble(5))), tmp, formatDouble(doubleToSring(tmp))));
+                        formatDouble(doubleToSring(rs.getDouble(5))), tmp, formatDouble(doubleToSring(tmp)), rs.getInt(13)));
             }
         } catch (Exception e) {
         }
@@ -312,7 +465,7 @@ public class DAO {
                 double tmp = rs.getDouble(4) - rs.getDouble(4) * (rs.getDouble(10) / 100);
                 list.add(new Product(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getDouble(4),
                         rs.getInt(5), rs.getInt(6), rs.getString(7), rs.getString(8), rs.getInt(9), rs.getDouble(10),
-                        formatDouble(doubleToSring(rs.getDouble(4))), tmp, formatDouble(doubleToSring(tmp))));
+                        formatDouble(doubleToSring(rs.getDouble(4))), tmp, formatDouble(doubleToSring(tmp)), rs.getInt(12)));
             }
         } catch (Exception e) {
         }
@@ -330,14 +483,14 @@ public class DAO {
                 double tmp = rs.getDouble(4) - rs.getDouble(4) * (rs.getDouble(10) / 100);
                 list.add(new Product(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getDouble(4),
                         rs.getInt(5), rs.getInt(6), rs.getString(7), rs.getString(8), rs.getInt(9), rs.getDouble(10),
-                        formatDouble(doubleToSring(rs.getDouble(4))), tmp, formatDouble(doubleToSring(tmp))));
+                        formatDouble(doubleToSring(rs.getDouble(4))), tmp, formatDouble(doubleToSring(tmp)), rs.getInt(12)));
             }
         } catch (Exception e) {
         }
         return list;
     }
     
-    public List<Product> phanTrangProductLaptop(int index, int size){
+    public List<Product> phanTrangProductsLaptop(int index, int size){
         String sql = "with x as(select ROW_NUMBER() over (order by pid asc) as r,\n" +
             "* from product where isCate = 1)\n" +
             "select * from x where r between ?*?-8 and ?*?";
@@ -354,14 +507,14 @@ public class DAO {
                 double tmp = rs.getDouble(5) - rs.getDouble(5) * (rs.getDouble(11) / 100);
                 list.add(new Product(rs.getInt(2), rs.getString(3), rs.getString(4), rs.getDouble(5),
                         rs.getInt(6), rs.getInt(7), rs.getString(8), rs.getString(9), rs.getInt(10), rs.getDouble(11),
-                        formatDouble(doubleToSring(rs.getDouble(5))), tmp, formatDouble(doubleToSring(tmp))));
+                        formatDouble(doubleToSring(rs.getDouble(5))), tmp, formatDouble(doubleToSring(tmp)),rs.getInt(13)));
             }
         } catch (Exception e) {
         }
         return list;
     }
     
-    public List<Product> phanTrangProductPhukien(int index, int size){
+    public List<Product> phanTrangProductsPhukien(int index, int size){
         String sql = "with x as(select ROW_NUMBER() over (order by pid asc) as r,\n" +
             "* from product where isCate = 0)\n" +
             "select * from x where r between ?*?-8 and ?*?";
@@ -378,7 +531,7 @@ public class DAO {
                 double tmp = rs.getDouble(5) - rs.getDouble(5) * (rs.getDouble(11) / 100);
                 list.add(new Product(rs.getInt(2), rs.getString(3), rs.getString(4), rs.getDouble(5),
                         rs.getInt(6), rs.getInt(7), rs.getString(8), rs.getString(9), rs.getInt(10), rs.getDouble(11),
-                        formatDouble(doubleToSring(rs.getDouble(5))), tmp, formatDouble(doubleToSring(tmp))));
+                        formatDouble(doubleToSring(rs.getDouble(5))), tmp, formatDouble(doubleToSring(tmp)), rs.getInt(13)));
             }
         } catch (Exception e) {
         }
@@ -387,10 +540,6 @@ public class DAO {
     
     public static void main(String[] args) {
         DAO dao = new DAO();
-        List<Product> list3 = dao.phanTrangProductLaptop(1, 9);
-        for(Product p:list3){
-            System.out.println(p.getPname() + " " + p.getGiamconChu() + " "+ p.getPriceChu());
-        }
         List<Category> listC = dao.getAllCategoryLaptop();
         for(Category c:listC){
             System.out.println(c.getCid());

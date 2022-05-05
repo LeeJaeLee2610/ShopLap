@@ -45,7 +45,7 @@
                                         <img src="${o.image}" alt="">
                                     </div>
                                     <div class="info">
-                                        <strong><a href="#">${o.pname}</a></strong>
+                                        <strong><a href="DetailController?pid=${o.pid}">${o.pname}</a></strong>
                                         <c:if test="${o.isDiscount == 0}">
                                             <c:choose>
                                                 <c:when test="${o.slc == 0}">
@@ -76,7 +76,7 @@
                                             </c:choose>
                                         </c:if>
                                     </div>
-                                    <button class="btn"><a href="#">Add to cart</a></button>
+                                    <button class="btn"><a href="CartController?pid=${o.pid}">Add to cart</a></button>
                                 </div>
                             </div>
                         </c:forEach>

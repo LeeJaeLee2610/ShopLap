@@ -4,6 +4,7 @@
     Author     : LeeJaeLee
 --%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -28,7 +29,7 @@
         <div class="pname">
             <div class="container">
                 <div class="row">
-                    <h3>Tên sản phẩm</h3>
+                    <h3>${p.pname}</h3>
                 </div>
             </div>
         </div>
@@ -38,44 +39,97 @@
                 <div class="row">
                     <div class="col-md-4">
                         <div class="imageP">
-                            <img src="images/demo.webp" alt="">
+                            <img src="${p.image}" alt="">
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="tittle-description">
                             <div class="price">
-                                <h4>Giá</h4>
+                                <c:choose>
+                                    <c:when test="${p.isDiscount == 0}">
+                                        <h4>Giá: ${p.priceChu}đ</h4>
+                                    </c:when>
+                                    <c:otherwise>
+                                        <div class="dacdiem">
+                                            <h4>Giá: ${p.giamconChu}đ</h4>
+                                            <h4 class="gachngang1">${p.priceChu}đ</h4>
+                                        </div>
+                                    </c:otherwise>
+                                </c:choose>
                                 <p><strong>Bảo hành:</strong> 12 tháng</p>
-                                <p><strong>Tình trạng:</strong> Còn hàng</p>
+                                <c:choose>
+                                    <c:when test="${p.slc < 1}">
+                                        <p><strong>Tình trạng:</strong> Hết hàng</p>
+                                    </c:when>
+                                    <c:otherwise>
+                                        <p><strong>Tình trạng:</strong> Còn hàng</p>
+                                    </c:otherwise>
+                                </c:choose>
                             </div>
                             <div class="title-des">
-                                <div class="tit">Máy tính của hãng Lenovo</div>
+                                <div class="tit">${p.tittle}</div>
                                 <div class="des">
                                     <strong>Mô tả chi tiết:</strong>
                                     <p>
-                                        Là 1 laptop gaming với cấu hình kinh khủng vcl có khả năng cân nhiều các loại game chiến vcl Mà thế đéo nào lại xuyên qua bên kia dc hay v
+                                        ${p.description}
                                     </p>
                                 </div>
                             </div>
                             <div class="btn-add">
-                                <button><a href="#">Mua hàng</a></button>
+                                <button><a href="CartController?pid=${p.pid}">Mua hàng</a></button>
                             </div>
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="thongso">
-                            <div class="hang">
-                                <div>CPU</div>
-                                <div>Core i5-1135G7 (4 nhân 8 luồng), Turbo 4.2 GHz, 8MB Cache</div>
-                            </div>
-                            <div class="hang">
-                                <div>Card</div>
-                                <div>Core i5-1135G7 (4 nhân 8 luồng), Turbo 4.2 GHz, 8MB Cache</div>
-                            </div>
-                            <div class="hang">
-                                <div>CPU</div>
-                                <div>Core i5-1135G7 (4 nhân 8 luồng), Turbo 4.2 GHz, 8MB Cache</div>
-                            </div>
+                            <c:if test="${p.isCate == 1}">
+                                <div class="hang">
+                                    <div>Tên máy</div>
+                                    <div>${infoLap.tenmay}</div>
+                                </div>
+                                <div class="hang">
+                                    <div>Ổ cứng</div>
+                                    <div>${infoLap.ocung}</div>
+                                </div>
+                                <div class="hang">
+                                    <div>CPU</div>
+                                    <div>${infoLap.cpu}</div>
+                                </div>
+                                <div class="hang">
+                                    <div>RAM</div>
+                                    <div>${infoLap.ram}</div>
+                                </div>
+                                <div class="hang">
+                                    <div>Card</div>
+                                    <div>${infoLap.cardDH}</div>
+                                </div>
+                                <div class="hang">
+                                    <div>Màn hình</div>
+                                    <div>${infoLap.manhinh}</div>
+                                </div>
+                                <div class="hang">
+                                    <div>Trọng lượng</div>
+                                    <div>${infoLap.trongluong}</div>
+                                </div>
+                                <div class="hang">
+                                    <div>Hệ điều hành</div>
+                                    <div>${infoLap.hdh}</div>
+                                </div>
+                            </c:if>
+                            <c:if test="${p.isCate == 0}">
+                                <div class="hang">
+                                    <div>Xuất xứ</div>
+                                    <div>${infoPK.xuatxu}</div>
+                                </div>
+                                <div class="hang">
+                                    <div>Tên phụ kiện</div>
+                                    <div>${infoPK.tenpk}</div>
+                                </div>
+                                <div class="hang">
+                                    <div>Loại</div>
+                                    <div>${infoPK.loai}</div>
+                                </div>
+                            </c:if>
                         </div>
                     </div>
                 </div>
@@ -90,18 +144,38 @@
             <div class="container">
                 <div class="swiper mySwiper">
                     <div class="swiper-wrapper">
-                        <div class="swiper-slide col-md-3">
-                            <div class="productP">
-                                <div class="imageP">
-                                    <img src="images/demo.webp" alt="">
+                        <c:if test="${p.isCate == 1}">
+                            <c:forEach items="${list}" var='o'>
+                                <div class="swiper-slide col-md-3">
+                                    <div class="productP">
+                                        <div class="imageP">
+                                            <img src="${o.image}" alt="">
+                                        </div>
+                                        <div class="infoP">
+                                            <h4><a href="DetailController?pid=${o.pid}">${o.pname}</a></h4>
+                                            <p>Giá: ${o.priceChu}đ</p>
+                                        </div>
+                                        <button class="btnP"><a href="CartController?pid=${o.pid}">Add to cart</a></button>
+                                    </div>
                                 </div>
-                                <div class="infoP">
-                                    <h4><a href="#">Ten san pham</a></h4>
-                                    <p>Gia san pham</p>
+                            </c:forEach>
+                        </c:if>
+                        <c:if test="${p.isCate == 0}">
+                            <c:forEach items="${list1}" var='o'>
+                                <div class="swiper-slide col-md-3">
+                                    <div class="productP">
+                                        <div class="imageP">
+                                            <img src="${o.image}" alt="">
+                                        </div>
+                                        <div class="infoP">
+                                            <h4><a href="DetailController?pid=${o.pid}">${o.pname}</a></h4>
+                                            <p>Giá: ${o.priceChu}đ</p>
+                                        </div>
+                                        <button class="btnP"><a href="CartController?pid=${o.pid}">Add to cart</a></button>
+                                    </div>
                                 </div>
-                                <button class="btnP"><a href="#">Add to cart</a></button>
-                            </div>
-                        </div>
+                            </c:forEach>
+                        </c:if>
                     </div>
                     <div class="swiper-button-next"></div>
                     <div class="swiper-button-prev"></div>

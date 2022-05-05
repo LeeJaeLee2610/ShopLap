@@ -38,7 +38,7 @@ public class ProductPhukienController extends HttpServlet {
         int tmp = Integer.parseInt(index);
         DAO dao = new DAO();
         List<Product> listPL = dao.getAllProductsPhukien();
-        List<Product> listPTP = dao.phanTrangProductPhukien(tmp, 9);
+        List<Product> listPTP = dao.phanTrangProductsPhukien(tmp, 9);
         int num = listPL.size();
         int pageSize = num/9;
         if(num%9 != 0){
