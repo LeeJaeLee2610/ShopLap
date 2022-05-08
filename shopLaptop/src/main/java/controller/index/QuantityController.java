@@ -4,13 +4,18 @@
  */
 package controller.index;
 
+import dao.DAO;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.List;
 import javax.servlet.ServletException;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import model.Product;
 
 /**
  *
@@ -30,13 +35,38 @@ public class QuantityController extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        HttpSession session = request.getSession();
-        String ac = (String) session.getAttribute("ac");
-        if(ac == null){
-            request.getRequestDispatcher("login.jsp").forward(request, response);
-        }else{
-            request.getRequestDispatcher("account.jsp").forward(request, response);
+        String quantity[] = request.getParameterValues("quantity");
+        List<Integer> amount = new ArrayList<>();
+        for(String s:quantity){
+            amount.add(Integer.parseInt(s));
         }
+        Cookie a[] = request.getCookies();
+        List<Product> list = new ArrayList<>();
+        DAO dao = new DAO();
+        for(Cookie c:a){
+            if(c.getName().equals("pid")){
+                String txt[] = c.getValue().split("/");
+                for(String s:txt){
+                    list.add(dao.getProductByPID(s));
+                }
+            }
+        }
+        
+        for (int i = 0; i < list.size(); i++) {
+            for (int j = i+1; j < list.size(); j++) {
+                if(list.get(i).getPid() == list.get(j).getPid()){
+                    list.remove(j);
+                    j--;
+                }
+            }
+        }
+        
+        for(int i = 0; i < list.size(); i++){
+            list.get(i).setAmount(amount.get(i));
+        }
+        
+        request.setAttribute("tmp", list);
+        request.getRequestDispatcher("account.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

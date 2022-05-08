@@ -30,7 +30,9 @@ public class CartController extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+        // Mỗi lần add to cart là 1 lần thêm pid vào CartController
         String pid = request.getParameter("pid");
+        // cookie là 1 mảng các giá trị lên khi gọi cookie thì p gọi mảng
         Cookie a[] = request.getCookies();
         String txt = "";
         for(Cookie o:a){
@@ -40,12 +42,14 @@ public class CartController extends HttpServlet {
                 response.addCookie(o);
             }
         }
+        // Thêm giá trị cho cookie
         if(txt.isEmpty()){
             txt = pid;
         }
         else{
             txt = txt + "/" + pid;
         }
+        // Tạo đối tượng Cookie
         Cookie c = new Cookie("pid", txt);
         c.setMaxAge(60 * 60 * 24);
         response.addCookie(c);

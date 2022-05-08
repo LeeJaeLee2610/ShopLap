@@ -30,13 +30,7 @@ public class AccountController extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        HttpSession session = request.getSession();
-        String ac = (String) session.getAttribute("ac");
-        if(ac == null){
-            request.getRequestDispatcher("login.jsp").forward(request, response);
-        }else{
-            request.getRequestDispatcher("account.jsp").forward(request, response);
-        }
+        request.getRequestDispatcher("account.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

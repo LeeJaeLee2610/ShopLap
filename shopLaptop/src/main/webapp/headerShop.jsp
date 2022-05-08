@@ -29,7 +29,7 @@
                                     <li><a href="#"><i class="fa fa-user"></i>Product Manager</a></li>
                                 </c:if>
                                 <c:if test="${sessionScope.ac != null}">
-                                    <li><a href="login.jsp"><i class="fa fa-user"></i>Xin chào ${sessionScope.ac.username}</a></li>
+                                    <li><a href="#"><i class="fa fa-user"></i>Xin chào ${sessionScope.ac.username}</a></li>
                                     <li><a href="LogoutController"><i class="fa fa-user"></i>Logout</a></li>
                                 </c:if>
                                 <c:if test="${sessionScope.ac == null}">

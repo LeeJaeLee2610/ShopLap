@@ -45,22 +45,24 @@
                                 <div><img src="${o.image}" alt=""></div>
                                 <div><a href="DetailController?pid=${o.pid}"><p>${o.pname}</p></a></div>
                             </div>
-                            <div class="gia">${o.giamconChu}đ</div>
+                            <div class="gia">
+                                <span class="gia1">${o.giamconChu}đ</span>
+                            </div>
                             <div class="sl">
                                 <span class="tru">-</span>
                                 <input type="text" value="1" class="quantity" name="quantity">
                                 <span class="cong">+</span>
                             </div>
                             <div>
-                                <input type="text" value="${o.giamconChu}" class="tong" name="tong" readonly>
+                                <span class="tong">${o.giamconChu}đ</span>
                             </div>
                             <div>
                                 <a href="RemoveController?pid=${o.pid}"><img src="images/icon_cart_del.png" alt=""></a>
                             </div>
                         </div>
                     </c:forEach>
-                        <div class="total">
-                            <div><strong>Tổng cộng: </strong><input type="text" value="100.000.000.000" class="sum_all" name="sum_all" readonly>VND</div>
+                        <div class="total1">
+                            <div><strong>Tổng cộng: </strong><span class="total">đ</span>
                         </div>
                     </div>
                 </div>
@@ -124,22 +126,63 @@
         <script src="js/app.js"></script>
     </body>
     <script>
-        const sl = document.querySelectorAll(".sl");
-        
-        sl.forEach((node) => {
-            const itemCount = node.querySelector(".quantity");
-            const add = node.querySelector(".cong");
-            const remove = node.querySelector(".tru");
+        var about = document.querySelectorAll(".about")
+        var about_tong = document.querySelectorAll(".tong")
+        var tmp1 = 0
+        about_tong.forEach((node) =>{
+            tmp1 += parseFloat(stringToFloat(node.innerHTML))
+            document.querySelector(".total").innerHTML = floatToString(tmp1) + 'đ'
+        })
 
-            add.addEventListener("click", () => {
-                itemCount.value = parseInt(itemCount.value) + 1;
-            });
 
-            remove.addEventListener("click", () => {
+        about.forEach((node) =>{
+            var sl = node.querySelector(".sl")
+            var gia = node.querySelector(".gia1").innerHTML
+            var tong = node.querySelector(".tong").innerHTML
+            var itemCount = node.querySelector(".quantity")
+            var add = node.querySelector(".cong")
+            var remove = node.querySelector(".tru")
+
+            add.addEventListener("click", ()=>{
+                itemCount.value = parseInt(itemCount.value) + 1
+                var num = parseFloat(stringToFloat(node.querySelector(".gia1").innerHTML))*itemCount.value
+                node.querySelector(".tong").innerHTML = floatToString(num.toLocaleString() + 'đ')
+                var tmp = document.querySelectorAll(".tong")
+                var res = 0
+                tmp.forEach((node) =>{
+                    res += parseFloat(stringToFloat(node.innerHTML))
+                    document.querySelector(".total").innerHTML = res+'đ'
+                })
+            })
+
+            remove.addEventListener("click", ()=>{
                 if(parseInt(itemCount.value) > 0){
-                    itemCount.value = parseInt(itemCount.value) - 1;
+                    itemCount.value = parseInt(itemCount.value) - 1
+                    var num = parseFloat(stringToFloat(node.querySelector(".gia1").innerHTML))*itemCount.value
+                    node.querySelector(".tong").innerHTML = floatToString(num.toLocaleString() + 'đ')
+                    var tmp = document.querySelectorAll(".tong")
+                    var res = 0
+                    tmp.forEach((node) =>{
+                        res += parseFloat(stringToFloat(node.innerHTML))
+                        document.querySelector(".total").innerHTML = res+'đ'
+                    })
                 }
-            });
-        });
+            })
+        })
+
+        function stringToFloat(num){
+            num = num.replace("đ", "");
+            for(var i = 0; i < num.length; i++){
+                num = num.replace(".", "");
+            }
+            return num
+        }
+
+        function floatToString(num){
+            for(var i = 0; i < num.length; i++){
+                num = num.replace(",", ".");
+            }
+            return num
+        }
     </script>
 </html>

@@ -651,7 +651,7 @@ body{
     flex-basis: 40%;
 }
 
-.head div:nth-child(3), .about div:nth-child(3){
+.head div:nth-child(3), .about .gia{
     flex-basis: 15%;
     display: flex;
     align-items: center;
@@ -718,10 +718,11 @@ body{
     color: pink;
 }
 
-.total{
+.total1{
     display: flex;
     justify-content: flex-end;
     padding-right: 15px;
+    margin-top: 10px;
 }
 
 .phan1 div div{
@@ -1026,6 +1027,10 @@ input[type=text], textarea{
     display: none;
 }
 
+.hide6{
+    display: none;
+}
+
 .select-cate .container{
     display: flex;
     justify-content: flex-end;
@@ -1171,4 +1176,15 @@ form input:focus{
 
 .sum_all:focus{
     outline: none;
+}
+
+.gia1{
+    width: 100%;
+    text-align: center;
+    border: none;
+}
+
+.tt{
+    width: 100%;
+    text-align: center;
 }

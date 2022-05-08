@@ -7,6 +7,7 @@ package controller.index;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -29,7 +30,34 @@ public class RemoveController extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        
+        String pid = request.getParameter("pid");
+        Cookie a[] = request.getCookies();
+        String txt = "";
+        for(Cookie c:a){
+            if(c.getName().equals("pid")){
+                txt = txt + c.getValue();
+                c.setMaxAge(0);
+                response.addCookie(c);
+            }
+        }
+        // Cập nhật lại cookie lúc sau chỉ còn giá trị của cookie ban đầu không chứa cái cookie lấy dc về
+        String pids[] = txt.split("/");
+        String txt_tmp = "";
+        for(int i = 0; i < pids.length; i++){
+            if(!pids[i].equals(pid)){
+                if(txt_tmp.isEmpty()){
+                    txt_tmp = pids[i];
+                }else{
+                    txt_tmp = txt_tmp + "/" + pids[i];
+                }
+            }
+        }
+        if(!txt_tmp.isEmpty()){
+            Cookie c = new Cookie("pid", txt_tmp);
+            c.setMaxAge(60*60*24);
+            response.addCookie(c);
+        }
+        response.sendRedirect("ShowCartController");
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

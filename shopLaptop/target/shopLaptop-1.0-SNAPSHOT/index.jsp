@@ -120,7 +120,7 @@
                                 </div>
                                 <div class="infoP">
                                     <h4><a href="DetailController?pid=${o.pid}">${o.pname}</a></h4>
-                                    <p>Giá: ${o.priceChu}đ</p>
+                                    <p>Giá: ${o.giamconChu}đ</p>
                                 </div>
                                 <button class="btnP"><a href="CartController?pid=${o.pid}">Add to cart</a></button>
                             </div>
@@ -151,7 +151,7 @@
                                 <div class="infoP">
                                     <h4><a href="DetailController?pid=${o.pid}">${o.pname}</a></h4>
                                     <div class="dacdiem">
-                                        <p>Giá: ${o.priceChu}đ</p>
+                                        <p>Giá: ${o.giamconChu}đ</p>
                                         <p>Đã bán: ${o.daban}</p>
                                     </div>
                                 </div>
@@ -184,7 +184,7 @@
                                 <div class="infoP">
                                     <h4><a href="DetailController?pid=${o.pid}">${o.pname}</a></h4>
                                     <div class="dacdiem">
-                                        <p>Giá: ${o.priceChu}đ</p>
+                                        <p>Giá: ${o.giamconChu}đ</p>
                                         <p>Còn lại: ${o.slc}</p>
                                     </div>
                                 </div>

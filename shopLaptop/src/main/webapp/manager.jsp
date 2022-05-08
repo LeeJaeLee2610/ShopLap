@@ -111,11 +111,6 @@
                         </select>
                     </div>
                     <div>
-                        <label for="code">Mã sản phẩm:</label>
-                        <input type="text" name="code" id="code" placeholder="Mã sản phẩm">
-                        <span class="form-message"></span>
-                    </div>
-                    <div>
                         <label for="photo">Chọn ảnh:</label>
                         <input type="file" id="photo" name="photo" placeholder="Enter Image">
                     </div>
@@ -208,7 +203,7 @@
                             <option value="0">No</option>
                             <option value="1">Yes</option>
                         </select>
-                        <div class="dis hide">
+                        <div class="dis hide6">
                             <label for="text-discount">Giảm (%):</label>
                             <input type="text" name="giatri-discout" id="text-discount" placeholder="Giảm">
                             <span class="form-message"></span>
@@ -239,11 +234,6 @@
                             <option value="3">Opel</option>
                             <option value="4">Audi</option>
                         </select>
-                    </div>
-                    <div>
-                        <label for="code">Mã sản phẩm:</label>
-                        <input type="text" name="code" id="code" placeholder="Mã sản phẩm">
-                        <span class="form-message"></span>
                     </div>
                     <div>
                         <label for="photo">Chọn ảnh:</label>
@@ -509,26 +499,26 @@
         var text = document.querySelector(".dis");
         function myFun(){
             if(yes.value == "1"){
-                text.classList.remove('hide')
+                text.classList.remove('hide6')
             }
             else{
-                text.classList.add("hide")
+                text.classList.add("hide6")
             }
         }
         yes.addEventListener('click', myFun)
     </script>
     <script>
-        var yes = document.querySelector(".luachon-discount1");
+        var yes1 = document.querySelector(".luachon-discount1");
         var dis1 = document.querySelector(".dis1");
-        function myFun(){
-            if(yes.value == "1"){
+        function myFun1(){
+            if(yes1.value == "1"){
                 dis1.classList.remove('hide')
             }
             else{
                 dis1.classList.add("hide")
             }
         }
-        yes.addEventListener('click', myFun)
+        yes1.addEventListener('click', myFun1)
     </script>
     <!-- add category -->
     <script>

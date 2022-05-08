@@ -11,6 +11,7 @@ import java.math.BigDecimal;
  * @author LeeJaeLee
  */
 public class Product {
+    private int stt;
     private int pid;
     private String image;
     private String pname;
@@ -36,6 +37,7 @@ public class Product {
     private String tenpk;
     private String loai;
     private int isCate;
+    private int amount;
     
     public Product() {
     }
@@ -57,7 +59,7 @@ public class Product {
         this.giamconChu = giamconChu;
         this.isCate = isCate;
     }
-
+    
     public Product(int pid, String tenmay, String ocung, String cpu, String ram, String cardDH, String manhinh, String trongluong, String hdh) {
         this.pid = pid;
         this.tenmay = tenmay;
@@ -278,6 +280,22 @@ public class Product {
 
     public void setLoai(String loai) {
         this.loai = loai;
+    }
+
+    public int getStt() {
+        return stt;
+    }
+
+    public void setStt(int stt) {
+        this.stt = stt;
+    }
+
+    public int getAmount() {
+        return amount;
+    }
+
+    public void setAmount(int amount) {
+        this.amount = amount;
     }
     
     

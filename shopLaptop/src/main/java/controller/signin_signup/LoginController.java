@@ -59,8 +59,11 @@ public class LoginController extends HttpServlet {
             mes2 = "Nhập mật khẩu";
             mes3 = "Đăng nhập không thành công";
         }
+        Account ac = dao.login(user, pass);
+        if(ac == null){
+            ok = false;
+        }
         if(ok){
-            Account ac = dao.login(user, pass);
             HttpSession session = request.getSession();
             session.setAttribute("ac", ac);
             response.sendRedirect("HomeController");
