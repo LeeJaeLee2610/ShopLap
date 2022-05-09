@@ -16,6 +16,10 @@ body{
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
+input[type=text], textarea, input[type=password], input[type=email]{
+    padding: 5px;
+}
+
 .header-area{
     font-family: 'Ubuntu', sans-serif;
 }
@@ -109,7 +113,7 @@ body{
 }
 
 .menu-bar{
-    margin-top: 20px;
+    margin-top: 10px;
     background-color: gray;
     text-align: center;
 } 
@@ -132,10 +136,6 @@ body{
     overflow: hidden;
     background-color: pink;
     border-radius: 10px;
-}
-
-.site-branding-area{
-    margin-top: 20px;
 }
 
 .tmp{
@@ -606,7 +606,7 @@ body{
 /* cart */
 
 .form-message{
-    margin-top: 5px;
+    margin-top: 2.5px;
     margin-bottom: 5px;
 }
 
@@ -725,7 +725,7 @@ body{
     margin-top: 10px;
 }
 
-.phan1 div div{
+/*.phan1 div div{
     display: flex;
     flex-wrap: wrap;
 }
@@ -771,7 +771,7 @@ body{
 .thongtinkhachhang a{
     color: black;
     text-decoration: none;
-}
+}*/
 
 .hide{
     display: none;
@@ -1187,4 +1187,183 @@ form input:focus{
 .tt{
     width: 100%;
     text-align: center;
+}
+
+#form-account{
+    margin-top: 20px;
+}
+
+#form-account .head-account{
+    text-align: center;
+}
+
+.head-account .col-md-1, .head-account .col-md-5, .head-account .col-md-2{
+    border: 1px solid black;
+}
+
+#form-account .table-account img{
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+#form-account .table-account .col-md-1{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#form-account .table-account .col-md-5{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#form-account .table-account .col-md-5 .img-account{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#form-account .table-account img{
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+#form-account .table-account .col-md-5 .img-account img{
+    flex-basis: 20%;
+}
+
+#form-account .table-account .col-md-5 .img-account strong{
+    flex-basis: 80%;
+}
+
+#form-account .table-account .col-md-2{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#form-account .table-account .col-md-1, #form-account .table-account .col-md-5, 
+#form-account .table-account .col-md-2{
+    border: 1px solid black;
+}
+
+.table-account input{
+    width: 100%;
+    border: none;
+    text-align: center;
+}
+
+.table-account input:focus{
+    outline: 0;
+}
+
+.res-total{
+    width: 100%;
+    border: none;
+    text-align: center;
+}
+
+.res-total:focus{
+    outline: none;
+}
+
+.total-account{
+    margin-top: 10px;
+    display: flex;
+    justify-content: end;
+}
+
+.total-account .col-md-2:first-child{
+    display: flex;
+    justify-content: end;
+    align-items: center;
+}
+
+.ttkh{
+    margin-top: 20px;
+}
+
+.ttkh .phan1, .ttkh .phan23{
+    border: 1px solid black;
+    padding: 10px;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.ttkh .phan23 .phan2{
+    border-bottom: 1px solid black;
+}
+
+.ttkh .phan1 div:first-child{
+    margin-bottom: 10px;
+}
+
+.ttkh .phan1 div{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.ttkh .phan1 div label{
+    flex-basis: 18%;
+}
+
+.ttkh .phan1 div input{
+    flex-basis: 82%;
+}
+
+.phan2 div:first-child{
+    margin-bottom: 10px;
+}
+
+.phan2 div:last-child textarea{
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.phan3{
+    margin-top: 10px;
+}
+
+.phan3 strong{
+    margin-bottom: 10px;
+}
+
+.chotdon{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.chotdon button{
+    width: 50%;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border: none;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border-radius: 5px;
+}
+
+.chotdon button:hover{
+    background-color: pink;
+    cursor: pointer;
+}
+
+.img-account a{
+    color: black;
+}
+
+.img-account strong:hover a{
+    color: pink;
+    text-decoration: none;
+}
+
+.tbao{
+    margin-top: 20px;
 }

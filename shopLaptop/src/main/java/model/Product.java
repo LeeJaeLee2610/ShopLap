@@ -38,6 +38,10 @@ public class Product {
     private String loai;
     private int isCate;
     private int amount;
+    private double tongP;
+    private String tongPChu;
+    private double total;
+    private String totalChu;
     
     public Product() {
     }
@@ -297,15 +301,36 @@ public class Product {
     public void setAmount(int amount) {
         this.amount = amount;
     }
-    
-    
-    
-    public static String doubleToSring(Double d){
-        if (d == null)
-            return null;
-        if (d.isNaN() || d.isInfinite())
-            return d.toString();
 
-        return new BigDecimal(d.toString()).stripTrailingZeros().toPlainString();
+    public double getTongP() {
+        return tongP;
+    }
+
+    public void setTongP(double tongP) {
+        this.tongP = tongP;
+    }
+
+    public String getTongPChu() {
+        return tongPChu;
+    }
+
+    public void setTongPChu(String tongPChu) {
+        this.tongPChu = tongPChu;
+    }
+
+    public double getTotal() {
+        return total;
+    }
+
+    public void setTotal(double total) {
+        this.total = total;
+    }
+
+    public String getTotalChu() {
+        return totalChu;
+    }
+
+    public void setTotalChu(String totalChu) {
+        this.totalChu = totalChu;
     }
 }

@@ -75,9 +75,11 @@
                                     </p>
                                 </div>
                             </div>
+                        <c:if test="${p.slc > 0}">
                             <div class="btn-add">
                                 <button><a href="CartController?pid=${p.pid}">Mua hàng</a></button>
                             </div>
+                        </c:if>
                         </div>
                     </div>
                     <div class="col-md-4">
@@ -155,7 +157,9 @@
                                             <h4><a href="DetailController?pid=${o.pid}">${o.pname}</a></h4>
                                             <p>Giá: ${o.priceChu}đ</p>
                                         </div>
-                                        <button class="btnP"><a href="CartController?pid=${o.pid}">Add to cart</a></button>
+                                        <c:if test="${o.slc > 0}">
+                                            <button class="btnP"><a href="CartController?pid=${o.pid}">Add to cart</a></button>
+                                        </c:if>
                                     </div>
                                 </div>
                             </c:forEach>
@@ -171,7 +175,9 @@
                                             <h4><a href="DetailController?pid=${o.pid}">${o.pname}</a></h4>
                                             <p>Giá: ${o.priceChu}đ</p>
                                         </div>
-                                        <button class="btnP"><a href="CartController?pid=${o.pid}">Add to cart</a></button>
+                                        <c:if test="${o.slc > 0}">
+                                            <button class="btnP"><a href="CartController?pid=${o.pid}">Add to cart</a></button>
+                                        </c:if>
                                     </div>
                                 </div>
                             </c:forEach>

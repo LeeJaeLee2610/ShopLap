@@ -26,6 +26,16 @@
         <!-- Menu Bar -->
         <jsp:include page="menubar.jsp"></jsp:include>
 
+        <c:if test="${sessionScope.list1 != null}">
+            <c:forEach items="${sessionScope.list_tmp}" var='o'>
+                <div class="container tbao">
+                    <div class="alert alert-danger" role="alert">
+                        Sản phẩm: ${o.pname} chỉ còn ${o.slc} chiếc
+                    </div>
+                </div>
+            </c:forEach>
+        </c:if>
+        
         <form action="QuantityController">
             <div class="cart">
                 <div class="container">
@@ -84,30 +94,50 @@
             <div class="container">
                 <div class="swiper mySwiper">
                     <div class="swiper-wrapper">
+                    <c:forEach items="${listThamKhao}" var='o'>
                         <div class="swiper-slide col-md-3">
                             <div class="productP">
                                 <div class="imageP">
-                                    <img src="images/demo.webp" alt="">
+                                    <img src="${o.image}" alt="">
                                 </div>
                                 <div class="infoP">
-                                    <h4><a href="#">Tên sản phẩm</a></h4>
-                                    <p>Giá</p>
+                                    <h4><a href="DetailController?pid=${o.pid}">${o.pname}</a></h4>
+                                    <c:if test="${o.isDiscount == 0}">
+                                            <c:choose>
+                                                <c:when test="${o.slc == 0}">
+                                                    <div class="dacdiem">
+                                                        <p>${o.priceChu}đ</p>
+                                                        <p>Hết hàng</p>
+                                                    </div>
+                                                </c:when>
+                                                <c:otherwise>
+                                                    <p>Giá: ${o.priceChu}đ</p>
+                                                </c:otherwise>
+                                            </c:choose>
+                                        </c:if>
+                                        <c:if test="${o.isDiscount == 1}">
+                                            <c:choose>
+                                                <c:when test="${o.slc == 0}">
+                                                    <div class="dacdiem">
+                                                        <p>${o.priceChu}đ</p>
+                                                        <p>Hết hàng</p>
+                                                    </div>
+                                                </c:when>
+                                                <c:otherwise>
+                                                    <div class="dacdiem">
+                                                        <p>${o.giamconChu}đ</p>
+                                                        <p class="gachngang">${o.priceChu}đ</p>
+                                                    </div>
+                                                </c:otherwise>
+                                            </c:choose>
+                                        </c:if>
                                 </div>
-                                <button class="btnP"><a href="#">Add to cart</a></button>
+                                <c:if test="${o.slc > 0}">
+                                    <button class="btnP"><a href="CartController?pid=${o.pid}">Add to cart</a></button>
+                                </c:if>
                             </div>
                         </div>
-                        <div class="swiper-slide col-md-3">
-                            <div class="productP">
-                                <div class="imageP">
-                                    <img src="images/demo.webp" alt="">
-                                </div>
-                                <div class="infoP">
-                                    <h4><a href="#">Tên sản phẩm</a></h4>
-                                    <p>Giá</p>
-                                </div>
-                                <button class="btnP"><a href="#">Add to cart</a></button>
-                            </div>
-                        </div>
+                    </c:forEach>
                     </div>
                     <div class="swiper-button-next"></div>
                     <div class="swiper-button-prev"></div>
@@ -125,64 +155,4 @@
         <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
         <script src="js/app.js"></script>
     </body>
-    <script>
-        var about = document.querySelectorAll(".about")
-        var about_tong = document.querySelectorAll(".tong")
-        var tmp1 = 0
-        about_tong.forEach((node) =>{
-            tmp1 += parseFloat(stringToFloat(node.innerHTML))
-            document.querySelector(".total").innerHTML = floatToString(tmp1) + 'đ'
-        })
-
-
-        about.forEach((node) =>{
-            var sl = node.querySelector(".sl")
-            var gia = node.querySelector(".gia1").innerHTML
-            var tong = node.querySelector(".tong").innerHTML
-            var itemCount = node.querySelector(".quantity")
-            var add = node.querySelector(".cong")
-            var remove = node.querySelector(".tru")
-
-            add.addEventListener("click", ()=>{
-                itemCount.value = parseInt(itemCount.value) + 1
-                var num = parseFloat(stringToFloat(node.querySelector(".gia1").innerHTML))*itemCount.value
-                node.querySelector(".tong").innerHTML = floatToString(num.toLocaleString() + 'đ')
-                var tmp = document.querySelectorAll(".tong")
-                var res = 0
-                tmp.forEach((node) =>{
-                    res += parseFloat(stringToFloat(node.innerHTML))
-                    document.querySelector(".total").innerHTML = res+'đ'
-                })
-            })
-
-            remove.addEventListener("click", ()=>{
-                if(parseInt(itemCount.value) > 0){
-                    itemCount.value = parseInt(itemCount.value) - 1
-                    var num = parseFloat(stringToFloat(node.querySelector(".gia1").innerHTML))*itemCount.value
-                    node.querySelector(".tong").innerHTML = floatToString(num.toLocaleString() + 'đ')
-                    var tmp = document.querySelectorAll(".tong")
-                    var res = 0
-                    tmp.forEach((node) =>{
-                        res += parseFloat(stringToFloat(node.innerHTML))
-                        document.querySelector(".total").innerHTML = res+'đ'
-                    })
-                }
-            })
-        })
-
-        function stringToFloat(num){
-            num = num.replace("đ", "");
-            for(var i = 0; i < num.length; i++){
-                num = num.replace(".", "");
-            }
-            return num
-        }
-
-        function floatToString(num){
-            for(var i = 0; i < num.length; i++){
-                num = num.replace(",", ".");
-            }
-            return num
-        }
-    </script>
 </html>

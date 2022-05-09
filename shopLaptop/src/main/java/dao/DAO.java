@@ -20,7 +20,7 @@ import model.Product;
  *
  * @author LeeJaeLee
  */
-public class DAO {    
+public class DAO {
     public Product getProductByPID(String pid){
         String sql = "select * from product where pid = ?";
         try {
@@ -189,7 +189,7 @@ public class DAO {
     
     public List<Product> getNewProducts() {
         List<Product> list = new ArrayList();
-        String sql = "select top 6 * from product where isCate = 1\n"
+        String sql = "select top 8 * from product where isCate = 1\n"
                 + "order by pid desc";
         try {
             Connection con = DatabaseHelper.getConnection();
@@ -208,7 +208,7 @@ public class DAO {
     
     public List<Product> getNewProducts1() {
         List<Product> list = new ArrayList();
-        String sql = "select top 6 * from product where isCate = 0\n"
+        String sql = "select top 8 * from product where isCate = 0\n"
                 + "order by pid desc";
         try {
             Connection con = DatabaseHelper.getConnection();
@@ -227,7 +227,7 @@ public class DAO {
 
     public List<Product> getSellingProducts() {
         List<Product> list = new ArrayList();
-        String sql = "select top 6 * from product where isCate = 1\n"
+        String sql = "select top 8 * from product where isCate = 1\n"
                 + "order by daban desc";
         try {
             Connection con = DatabaseHelper.getConnection();
@@ -246,7 +246,7 @@ public class DAO {
 
     public List<Product> getLimitedProducts() {
         List<Product> list = new ArrayList();
-        String sql = "select top 6 * from product where isCate = 1 and\n"
+        String sql = "select top 8 * from product where isCate = 1 and\n"
                 + "slc < 10 and slc > 0";
         try {
             Connection con = DatabaseHelper.getConnection();
@@ -265,7 +265,7 @@ public class DAO {
 
     public List<Product> getDiscountProducts() {
         List<Product> list = new ArrayList();
-        String sql = "select top 6 * from product where isDiscount = 1 and isCate = 1";
+        String sql = "select top 8 * from product where isDiscount = 1 and isCate = 1";
         try {
             Connection con = DatabaseHelper.getConnection();
             PreparedStatement ps = con.prepareStatement(sql);

@@ -7,8 +7,10 @@ package controller.index;
 import dao.DAO;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 import javax.servlet.ServletException;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
@@ -35,6 +37,7 @@ public class QuantityController extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+        HttpSession session = request.getSession();
         String quantity[] = request.getParameterValues("quantity");
         List<Integer> amount = new ArrayList<>();
         for(String s:quantity){
@@ -42,6 +45,8 @@ public class QuantityController extends HttpServlet {
         }
         Cookie a[] = request.getCookies();
         List<Product> list = new ArrayList<>();
+        List<Integer> list1 = new ArrayList<>();
+        List<Product> list2 = new ArrayList<>();
         DAO dao = new DAO();
         for(Cookie c:a){
             if(c.getName().equals("pid")){
@@ -61,12 +66,45 @@ public class QuantityController extends HttpServlet {
             }
         }
         
+        boolean ok = true;
+        
         for(int i = 0; i < list.size(); i++){
             list.get(i).setAmount(amount.get(i));
         }
         
-        request.setAttribute("tmp", list);
-        request.getRequestDispatcher("account.jsp").forward(request, response);
+        for(Product p:list){
+            p.setTongP(p.getGiamCon()*p.getAmount());
+        }
+        
+        double tmp = 0;
+        
+        for(Product p:list){
+            tmp += p.getTongP();
+        }
+        
+        for(Product p:list){
+            p.setTongPChu(formatDouble(doubleToSring(p.getTongP())));
+        }
+        
+        for(Product p:list){
+            if(p.getAmount() > p.getSlc()){
+                ok = false;
+                list1.add(p.getAmount());
+                list2.add(p);
+            }
+        }
+        
+        if(ok){
+            session.removeAttribute("list1");
+            session.removeAttribute("list_tmp");
+            request.setAttribute("list", list);
+            request.setAttribute("totalne", formatDouble(doubleToSring(tmp)));
+            request.getRequestDispatcher("checkout.jsp").forward(request, response);
+        }else{
+            session.setAttribute("list1", list1);
+            session.setAttribute("list_tmp", list2);
+            response.sendRedirect("ShowCartController");
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -108,4 +146,17 @@ public class QuantityController extends HttpServlet {
         return "Short description";
     }// </editor-fold>
 
+    public static String formatDouble(String input) {
+        double num = Double.parseDouble(input);
+        return String.format(Locale.GERMAN, "%,.0f", num);
+    }
+    
+    public static String doubleToSring(Double d){
+        if (d == null)
+            return null;
+        if (d.isNaN() || d.isInfinite())
+            return d.toString();
+
+        return new BigDecimal(d.toString()).stripTrailingZeros().toPlainString();
+    }
 }

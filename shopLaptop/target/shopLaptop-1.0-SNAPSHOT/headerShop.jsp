@@ -19,7 +19,7 @@
                     <div class="col-md-8">
                         <div class="user-menu">
                             <ul>
-                                <li><a href="#"><i class="fa-solid fa-laptop"></i>Home</a></li>
+                                <li><a href="HomeController"><i class="fa-solid fa-laptop"></i>Home</a></li>
                                 <c:if test="${sessionScope.ac.isAdmin == 0}">
                                     <c:if test="${sessionScope.ac != null}">
                                         <li><a href="AccountController?id=${sessionScope.ac.id}"><i class="fa fa-user"></i>Account</a></li>

@@ -76,7 +76,9 @@
                                             </c:choose>
                                         </c:if>
                                     </div>
-                                    <button class="btn"><a href="CartController?pid=${o.pid}">Add to cart</a></button>
+                                <c:if test="${o.slc > 0}">
+                                        <button class="btn"><a href="CartController?pid=${o.pid}">Add to cart</a></button>
+                                </c:if>
                                 </div>
                             </div>
                         </c:forEach>

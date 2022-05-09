@@ -122,7 +122,9 @@
                                     <h4><a href="DetailController?pid=${o.pid}">${o.pname}</a></h4>
                                     <p>Giá: ${o.giamconChu}đ</p>
                                 </div>
+                            <c:if test='${o.slc > 0}'>
                                 <button class="btnP"><a href="CartController?pid=${o.pid}">Add to cart</a></button>
+                            </c:if>
                             </div>
                         </div>
                     </c:forEach>
@@ -155,7 +157,9 @@
                                         <p>Đã bán: ${o.daban}</p>
                                     </div>
                                 </div>
+                            <c:if test='${o.slc > 0}'>
                                 <button class="btnP"><a href="CartController?pid=${o.pid}">Add to cart</a></button>
+                            </c:if>
                             </div>
                         </div>
                     </c:forEach>
@@ -188,7 +192,9 @@
                                         <p>Còn lại: ${o.slc}</p>
                                     </div>
                                 </div>
+                            <c:if test='${o.slc > 0}'>
                                 <button class="btnP"><a href="CartController?pid=${o.pid}">Add to cart</a></button>
+                            </c:if>
                             </div>
                         </div>
                     </c:forEach>
@@ -222,7 +228,9 @@
                                     </div>
                                     <p class="giamcon">Chỉ còn: ${o.giamconChu} VND</p>
                                 </div>
+                            <c:if test='${o.slc > 0}'>
                                 <button class="btnP"><a href="CartController?pid=${o.pid}">Add to cart</a></button>
+                            </c:if>
                             </div>
                         </div>
                     </c:forEach>

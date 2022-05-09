@@ -38,6 +38,7 @@ public class ShowCartController extends HttpServlet {
         Cookie a[] = request.getCookies();
         List<Product> list = new ArrayList<>();
         DAO dao = new DAO();
+        List<Product> list2 = dao.getNewProducts();
         for(Cookie c:a){
             if(c.getName().equals("pid")){
                 String txt[] = c.getValue().split("/");
@@ -57,6 +58,7 @@ public class ShowCartController extends HttpServlet {
         HttpSession session = request.getSession();
         session.setAttribute("tmp", list.size());
         request.setAttribute("listCart", list);
+        request.setAttribute("listThamKhao", list2);
         request.getRequestDispatcher("cart.jsp").forward(request, response);
     }
 

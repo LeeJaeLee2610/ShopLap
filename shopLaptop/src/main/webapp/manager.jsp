@@ -15,30 +15,8 @@
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     </head>
     <body>
-        <div class="header-area">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-8">
-                        <div class="user-menu">
-                            <ul>
-                                <li><a href="#"><i class="fa-solid fa-laptop"></i>Home</a></li>
-                                <li><a href="#"><i class="fa fa-user"></i>Account</a></li>
-                                <li><a href="#"><i class="fa fa-user"></i>Product Manager</a></li>
-                                <li><a href="#"><i class="fa fa-user"></i>Login</a></li>
-                                <li><a href="#"><i class="fa fa-user"></i>Logout</a></li>
-                                <li><a href="#"><i class="fa fa-user"></i>Checkout</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <form action="" class="search">
-                            <input type="text" placeholder="Search..." name="search">
-                            <button type="submit"><i class="fa fa-search"></i></button>
-                          </form>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <!--header-->
+        <jsp:include page="headerShop.jsp"></jsp:include>
 
         <div class="btn-add-cate">
             <div class="container">
@@ -137,65 +115,6 @@
                     <div>
                         <label for="description1">Chi tiết:</label>
                         <textarea name="des" id="description1" cols="30" rows="10" placeholder="Chi tiết"></textarea>
-                    </div>
-                    <div class="info-laptop">
-                        <div>
-                            <label for="tenmay">Tên máy:</label>
-                            <input type="text" id="tenmay" name="tenmay" placeholder="Tên máy">
-                            <span class="form-message"></span>
-                        </div>
-                        <div>
-                            <label for="ocung">Ổ cứng:</label>
-                            <input type="text" id="ocung" name="ocung" placeholder="Ổ cứng">
-                            <span class="form-message"></span>
-                        </div>
-                        <div>
-                            <label for="cpu">CPU:</label>
-                            <input type="text" id="cpu" name="cpu" placeholder="CPU">
-                            <span class="form-message"></span>
-                        </div>
-                        <div>
-                            <label for="ram">RAM:</label>
-                            <input type="text" id="ram" name="ram" placeholder="RAM">
-                            <span class="form-message"></span>
-                        </div>
-                        <div>
-                            <label for="card">Card:</label>
-                            <input type="text" id="card" name="card" placeholder="Card">
-                            <span class="form-message"></span>
-                        </div>
-                        <div>
-                            <label for="manhinh">Màn hình:</label>
-                            <input type="text" id="manhinh" name="manhinh" placeholder="Màn hình">
-                            <span class="form-message"></span>
-                        </div>
-                        <div>
-                            <label for="Trọng lượng">Trọng lượng:</label>
-                            <input type="text" id="trongluong" name="trongluong" placeholder="Trọng lượng">
-                            <span class="form-message"></span>
-                        </div>
-                        <div>
-                            <label for="hdh">Hệ điều hành:</label>
-                            <input type="text" id="trongluong" name="trongluong" placeholder="Hệ điều hành">
-                            <span class="form-message"></span>
-                        </div>
-                    </div>
-                    <div class="info-phukien hide4">
-                        <div>
-                            <label for="xuatxu">Xuất xứ:</label>
-                            <input type="text" id="xuatxu" name="xuatxu" placeholder="Xuất xứ">
-                            <span class="form-message"></span>
-                        </div>
-                        <div>
-                            <label for="tenpk">Tên sản phẩm:</label>
-                            <input type="text" id="tenpk" name="tenpk" placeholder="Nhập">
-                            <span class="form-message"></span>
-                        </div>
-                        <div>
-                            <label for="loai">Loại:</label>
-                            <input type="text" id="loai" name="loai" placeholder="Loại">
-                            <span class="form-message"></span>
-                        </div>
                     </div>
                     <div>
                         <label for="luachon-discount" class="gg">Giảm giá:</label>
