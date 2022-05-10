@@ -63,6 +63,7 @@ public class SearchController1 extends HttpServlet {
             pageSize++;
         }
         request.setAttribute("pageSize2", pageSize);
+        session.removeAttribute("thongbao");
         request.getRequestDispatcher("product.jsp").forward(request, response);
     }
 

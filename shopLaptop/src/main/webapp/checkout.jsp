@@ -25,7 +25,7 @@
         <!-- Menu Bar -->
         <jsp:include page="menubar.jsp"></jsp:include>
         
-        <form action="AccountController" id="form-account">
+        <form action="AccountController" id="form-account" method="post">
             <div class="container">
                 <div class="row head-account">
                     <div class="col-md-1">
@@ -48,7 +48,7 @@
                     <div class="row table-account">
                         <div class="col-md-1">
                             <div class="stt-account">
-                                1
+                                ${o.stt}
                             </div>
                         </div>
                         <div class="col-md-5">
@@ -59,7 +59,7 @@
                         </div>
                         <div class="col-md-2">
                             <div class="gia-account">
-                                ${o.giamconChu}
+                                ${o.giamconChu}đ
                             </div>
                         </div>
                         <div class="col-md-2">
@@ -69,7 +69,7 @@
                         </div>
                         <div class="col-md-2">
                             <div class="tong-account">
-                                ${o.tongPChu}
+                                ${o.tongPChu}đ
                             </div>
                         </div>
                     </div>
@@ -92,33 +92,36 @@
                             </div>
                             <div>
                                 <label for="tk">Tài khoản: *</label>
-                                <input type="text" id="tk" name="tk">
-                                <span class="form-message">asdhajkdhajshdjaskdhasjkdhasjkdhasjdhasjkdhasdjk</span>
+                                <input type="text" id="tk" name="tk" value="${sessionScope.ac.username}">
+                                <span class="form-message">${mes1}</span>
                             </div>
                             <div>
                                 <label for="mk">Mật khẩu: *</label>
                                 <input type="password" id="mk" name="mk">
-                                <span class="form-message">ok</span>
+                                <span class="form-message">${mes2}</span>
                             </div>
                             <div>
                                 <label for="ht">Họ tên: *</label>
                                 <input type="text" id="ht" name="ht">
-                                <span class="form-message">ok</span>
+                                <span class="form-message">${mes3}</span>
                             </div>
                             <div>
                                 <label for="dt">Điện thoại: *</label>
                                 <input type="text" id="dt" name="dt">
-                                <span class="form-message">ok</span>
+                                <span class="form-message">${mes4}</span>
                             </div>
                             <div>
                                 <label for="dc">Địa chỉ: *</label>
                                 <input type="text" id="dc" name="dc">
-                                <span class="form-message">ok</span>
+                                <span class="form-message">${mes5}</span>
                             </div>
                             <div>
                                 <label for="email">Email:</label>
                                 <input type="email" id="email" name="email">
-                                <span class="form-message">ok</span>
+                                <span class="form-message">${mes6}</span>
+                            </div>
+                            <div>
+                                <p class="text-danger">${mes7}</p>
                             </div>
                         </div>
                     </div>
@@ -129,14 +132,18 @@
                                     <strong>2. Ghi chú cho đơn hàng</strong>
                                 </div>
                                 <div>
-                                    <textarea name="ghichu" id="ghichu" cols="30" rows="3"></textarea>
+                                    <textarea name="ghichu" id="ghichu" cols="30" rows="5"></textarea>
                                 </div>
                             </div>
                             <div class="phan3">
                                 <strong>3. Phương thức thanh toán</strong>
-                                <div>1</div>
-                                <div>1</div>
-                                <div>1</div>
+                                <div>
+                                    <input type="radio" id="tienmat" name="thanhtoan" value="1">
+                                    <label for="tienmat">Thanh toán bằng tiền mặt khi nhận hàng</label><br>
+                                    <input type="radio" id="paypal" name="thanhtoan" value="2">
+                                    <label for="paypal">PayPal</label>
+                                    <p class="text-danger">${thanhthanh}</p>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -154,5 +161,6 @@
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        <script src="js/app.js"></script>
     </body>
 </html>

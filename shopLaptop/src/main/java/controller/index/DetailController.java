@@ -12,6 +12,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import model.Product;
 
 /**
@@ -32,6 +33,7 @@ public class DetailController extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+        HttpSession session = request.getSession();
         String pid = request.getParameter("pid");
         DAO dao = new DAO();
         Product p = dao.getProductByPID(pid);
@@ -39,6 +41,7 @@ public class DetailController extends HttpServlet {
         Product infoPK = dao.infoPhukien(pid);
         List<Product> list = dao.getNewProducts();
         List<Product> list1 = dao.getNewProducts1();
+        session.removeAttribute("thongbao");
         request.setAttribute("p", p);
         request.setAttribute("infoLap", infoLap);
         request.setAttribute("infoPK", infoPK);

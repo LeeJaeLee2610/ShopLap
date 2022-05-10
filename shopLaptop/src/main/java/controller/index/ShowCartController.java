@@ -55,6 +55,11 @@ public class ShowCartController extends HttpServlet {
                 }
             }
         }
+        
+        for(int i = 0; i < list.size(); i++){
+            list.get(i).setStt(i + 1);
+        }
+        
         HttpSession session = request.getSession();
         session.setAttribute("tmp", list.size());
         request.setAttribute("listCart", list);

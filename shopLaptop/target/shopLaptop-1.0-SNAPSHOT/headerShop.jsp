@@ -22,7 +22,7 @@
                                 <li><a href="HomeController"><i class="fa-solid fa-laptop"></i>Home</a></li>
                                 <c:if test="${sessionScope.ac.isAdmin == 0}">
                                     <c:if test="${sessionScope.ac != null}">
-                                        <li><a href="AccountController?id=${sessionScope.ac.id}"><i class="fa fa-user"></i>Account</a></li>
+                                        <li><a href="ShowAccountController?id=${sessionScope.ac.username}"><i class="fa fa-user"></i>Account</a></li>
                                     </c:if>
                                 </c:if>
                                 <c:if test="${sessionScope.ac.isAdmin == 1}">

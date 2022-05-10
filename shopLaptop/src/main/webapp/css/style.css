@@ -1189,6 +1189,8 @@ form input:focus{
     text-align: center;
 }
 
+/* account */
+
 #form-account{
     margin-top: 20px;
 }
@@ -1252,95 +1254,95 @@ form input:focus{
     border: 1px solid black;
 }
 
-.table-account input{
+#form-account .table-account input{
     width: 100%;
     border: none;
     text-align: center;
 }
 
-.table-account input:focus{
+#form-account .table-account input:focus{
     outline: 0;
 }
 
-.res-total{
+#form-account .res-total{
     width: 100%;
     border: none;
     text-align: center;
 }
 
-.res-total:focus{
+#form-account .res-total:focus{
     outline: none;
 }
 
-.total-account{
+#form-account .total-account{
     margin-top: 10px;
     display: flex;
     justify-content: end;
 }
 
-.total-account .col-md-2:first-child{
+#form-account .total-account .col-md-2:first-child{
     display: flex;
     justify-content: end;
     align-items: center;
 }
 
-.ttkh{
+#form-account .ttkh{
     margin-top: 20px;
 }
 
-.ttkh .phan1, .ttkh .phan23{
+#form-account .ttkh .phan1, .ttkh .phan23{
     border: 1px solid black;
     padding: 10px;
     border-radius: 5px;
     overflow: hidden;
 }
 
-.ttkh .phan23 .phan2{
+#form-account .ttkh .phan23 .phan2{
     border-bottom: 1px solid black;
 }
 
-.ttkh .phan1 div:first-child{
+#form-account .ttkh .phan1 div:first-child{
     margin-bottom: 10px;
 }
 
-.ttkh .phan1 div{
+#form-account .ttkh .phan1 div{
     display: flex;
     flex-wrap: wrap;
     align-items: center;
 }
 
-.ttkh .phan1 div label{
+#form-account .ttkh .phan1 div label{
     flex-basis: 18%;
 }
 
-.ttkh .phan1 div input{
+#form-account .ttkh .phan1 div input{
     flex-basis: 82%;
 }
 
-.phan2 div:first-child{
+#form-account .phan2 div:first-child{
     margin-bottom: 10px;
 }
 
-.phan2 div:last-child textarea{
+#form-account .phan2 div:last-child textarea{
     width: 100%;
     margin-bottom: 10px;
 }
 
-.phan3{
+#form-account .phan3{
     margin-top: 10px;
 }
 
-.phan3 strong{
+#form-account .phan3 strong{
     margin-bottom: 10px;
 }
 
-.chotdon{
+#form-account .chotdon{
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.chotdon button{
+#form-account .chotdon button{
     width: 50%;
     margin-top: 20px;
     margin-bottom: 20px;
@@ -1350,20 +1352,363 @@ form input:focus{
     border-radius: 5px;
 }
 
-.chotdon button:hover{
+#form-account .chotdon button:hover{
     background-color: pink;
     cursor: pointer;
 }
 
-.img-account a{
+#form-account .img-account a{
     color: black;
 }
 
-.img-account strong:hover a{
+#form-account .img-account strong:hover a{
     color: pink;
     text-decoration: none;
 }
 
 .tbao{
     margin-top: 20px;
+}
+
+.phan1 div{
+    margin-bottom: 10px;
+}
+
+.phan1 div:last-child{
+    margin-bottom: 0px;
+}
+
+/*infor-account*/
+
+#form-account1{
+    margin-top: 20px;
+}
+
+#form-account1 .head-account{
+    text-align: center;
+}
+
+.head-account1 .col-md-1, .head-account .col-md-5, .head-account .col-md-2{
+    border: 1px solid black;
+}
+
+#form-account1 .table-account img{
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+#form-account1 .table-account .col-md-1{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#form-account1 .table-account .col-md-5{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#form-account1 .table-account .col-md-5 .img-account{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#form-account1 .table-account img{
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+#form-account1 .table-account .col-md-5 .img-account img{
+    flex-basis: 20%;
+}
+
+#form-account1 .table-account .col-md-5 .img-account strong{
+    flex-basis: 80%;
+}
+
+#form-account1 .table-account .col-md-2{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#form-account1 .table-account .col-md-1, #form-account1 .table-account .col-md-5, 
+#form-account1 .table-account .col-md-2{
+    border: 1px solid black;
+}
+
+#form-account1 .table-account input{
+    width: 100%;
+    border: none;
+    text-align: center;
+}
+
+#form-account1 .table-account input:focus{
+    outline: 0;
+}
+
+#form-account1 .res-total{
+    width: 100%;
+    border: none;
+    text-align: center;
+}
+
+#form-account1 .res-total:focus{
+    outline: none;
+}
+
+#form-account1 .total-account{
+    margin-top: 10px;
+    display: flex;
+    justify-content: end;
+}
+
+#form-account1 .total-account .col-md-2:first-child{
+    display: flex;
+    justify-content: end;
+    align-items: center;
+}
+
+#form-account1 .ttkh{
+    margin-top: 20px;
+}
+
+#form-account1 .ttkh .phan1, .ttkh .phan23{
+    border: 1px solid black;
+    padding: 10px;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+#form-account1 .ttkh .phan23 .phan2{
+    border-bottom: 1px solid black;
+}
+
+#form-account1 .ttkh .phan1 div:first-child{
+    margin-bottom: 10px;
+}
+
+#form-account1 .ttkh .phan1 div{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+#form-account1 .ttkh .phan1 div label{
+    flex-basis: 18%;
+}
+
+#form-account1 .ttkh .phan1 div input{
+    flex-basis: 82%;
+    padding-bottom: 10px;
+}
+
+/*#form-account1 .phan2 div:first-child{
+    margin-bottom: 10px;
+}*/
+
+/*#form-account1 .phan2 div:last-child input{
+    padding: 0px;
+}*/
+
+#form-account1 .phan3{
+    margin-top: 10px;
+}
+
+#form-account1 .phan3 strong{
+    margin-bottom: 10px;
+}
+
+#form-account1 .chotdon{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#form-account1 .chotdon button{
+    width: 50%;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border: none;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border-radius: 5px;
+}
+
+#form-account1 .chotdon button:hover{
+    background-color: pink;
+    cursor: pointer;
+}
+
+#form-account1 .img-account a{
+    color: black;
+}
+
+#form-account1 .img-account strong:hover a{
+    color: pink;
+    text-decoration: none;
+}
+
+#form-account1 .phan1 div{
+    margin-bottom: 10px;
+}
+
+#form-account1 .phan1 div:last-child{
+    margin-bottom: 0px;
+}
+
+#form-account1 input{
+    border: none;
+}
+
+.form-message{
+    color: red;
+}
+
+#form-account1 .phan3{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#form-account1 .phan3 strong{
+    flex-basis: 100%;
+}
+
+#form-account1 .phan3 input{
+    flex-basis: 100%;
+    margin-top: -10px;
+}
+
+.chitietDH img{
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.chitietDH .head-account1 .col-md-1, .chitietDH .head-account1 .col-md-5,
+.chitietDH .head-account1 .col-md-2{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.chitietDH .table-account .col-md-1, .chitietDH .table-account .col-md-5,
+.chitietDH .table-account .col-md-2{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.chitietDH .img-account{
+    display: flex;
+    align-items: center;
+}
+
+.chitietDH .img-account img{
+    flex-basis: 30%;
+}
+
+.chitietDH .img-account strong{
+    flex-basis: 70%;
+}
+
+.chitietDH .stt-account, .chitietDH .gia-account,
+.chitietDH .qty-account, .chitietDH .tong-account{
+    text-align: center;
+}
+
+.donhang .giaDH, .donhang .btn-detail{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.donhang .tenDH{
+    display: flex;
+    align-items: center;
+}
+
+.donhang{
+    margin-top: 20px;
+}
+
+.donhang .tenDH, .donhang .giaDH, .donhang .btn-detail{
+    border: 1px solid black;
+}
+
+.donhang .btn-detail button{
+    padding: 5px;
+    width: 100%;
+    border: none;
+    background-color: transparent;
+}
+
+.donhang .btn-detail button a{
+    text-decoration: none;
+    color: black;
+}
+
+.donhang .btn-detail button:hover a{
+    color: pink;
+}
+
+.donhang .btn-detail button:focus{
+    outline: none;
+}
+
+.chitietDH{
+    margin-top: 20px;
+}
+
+.chitietDH .head-account1 div, .chitietDH .table-account .col-md-1, .chitietDH .table-account .col-md-5, .chitietDH .table-account .col-md-2{
+    border: 1px solid black;
+}
+
+#form-account1 .container:last-child{
+    width: 1000px;
+}
+
+.chotdon1{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.chotdon1 button:first-child{
+    flex-basis: 40%;
+    border: none;
+}
+
+.chotdon1 button:first-child:hover{
+    background: pink;
+}
+
+.chotdon1 button:last-child{
+    flex-basis: 40%;
+    border: none;
+}
+
+.chotdon1 button:last-child a{
+    color: black;
+}
+
+.chotdon1 button:last-child:hover{
+    background-color: pink;
+}
+
+.chotdon1 button:last-child:hover a{
+    text-decoration: none;
+}
+
+.hide9{
+    display: none;
 }

@@ -57,6 +57,7 @@ public class CategoryPhukienController extends HttpServlet {
         if(num%9 != 0){
             pageSize++;
         }
+        session.removeAttribute("thongbao");
         session.setAttribute("cidne", cid);
         request.setAttribute("listCL", listCL);
         request.setAttribute("listPTP", listPTP);

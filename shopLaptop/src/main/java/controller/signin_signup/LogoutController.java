@@ -7,6 +7,7 @@ package controller.signin_signup;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -32,6 +33,15 @@ public class LogoutController extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         HttpSession session = request.getSession();
         session.removeAttribute("ac");
+        session.removeAttribute("tmp");
+            Cookie a[] = request.getCookies();
+            for(Cookie o:a){
+                if(o.getName().equals("pid")){
+                    o.setValue("");
+                    o.setMaxAge(0);
+                    response.addCookie(o);
+                }
+            }
         response.sendRedirect("HomeController");
     }
 

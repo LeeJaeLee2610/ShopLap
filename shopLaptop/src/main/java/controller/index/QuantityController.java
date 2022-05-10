@@ -37,6 +37,8 @@ public class QuantityController extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+        response.setCharacterEncoding("UTF-8");
+        request.setCharacterEncoding("UTF-8");
         HttpSession session = request.getSession();
         String quantity[] = request.getParameterValues("quantity");
         List<Integer> amount = new ArrayList<>();
@@ -69,6 +71,7 @@ public class QuantityController extends HttpServlet {
         boolean ok = true;
         
         for(int i = 0; i < list.size(); i++){
+            list.get(i).setStt(i + 1);
             list.get(i).setAmount(amount.get(i));
         }
         
@@ -99,10 +102,12 @@ public class QuantityController extends HttpServlet {
             session.removeAttribute("list_tmp");
             request.setAttribute("list", list);
             request.setAttribute("totalne", formatDouble(doubleToSring(tmp)));
+            session.removeAttribute("thongbao");
             request.getRequestDispatcher("checkout.jsp").forward(request, response);
         }else{
             session.setAttribute("list1", list1);
             session.setAttribute("list_tmp", list2);
+            session.removeAttribute("thongbao");
             response.sendRedirect("ShowCartController");
         }
     }

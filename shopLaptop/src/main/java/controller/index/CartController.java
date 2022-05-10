@@ -11,6 +11,7 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -31,6 +32,7 @@ public class CartController extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         // Mỗi lần add to cart là 1 lần thêm pid vào CartController
+        HttpSession session = request.getSession();
         String pid = request.getParameter("pid");
         // cookie là 1 mảng các giá trị lên khi gọi cookie thì p gọi mảng
         Cookie a[] = request.getCookies();
@@ -53,6 +55,7 @@ public class CartController extends HttpServlet {
         Cookie c = new Cookie("pid", txt);
         c.setMaxAge(60 * 60 * 24);
         response.addCookie(c);
+        session.removeAttribute("thongbao");
         response.sendRedirect("ShowCartController");
     }
 

@@ -11,12 +11,122 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
+        <link rel="stylesheet" href="css/style.css">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
     </head>
     <body>
-        <h1>Hello World!</h1>
+        <!--header-->
+        <jsp:include page="headerShop.jsp"></jsp:include>
+        <!-- header end -->
+        <jsp:include page="menubar.jsp"></jsp:include>
+        <div class="donhang">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 tenDH">
+                        Đơn hàng này của Em Cường nè
+                    </div>
+                    <div class="col-md-4 giaDH">
+                        40.000.000đ
+                    </div>
+                    <div class="col-md-2 btn-detail">
+                        <button class="btn-ct"><a href="#">Chi tiết</a></button>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 tenDH">
+                        Đơn hàng này của Em Cường nè
+                    </div>
+                    <div class="col-md-4 giaDH">
+                        40.000.000đ
+                    </div>
+                    <div class="col-md-2 btn-detail">
+                        <button class="btn-ct"><a href="#">Chi tiết</a></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="chitietDH">
+            <div class="container">
+                <div class="row head-account1">
+                    <div class="col-md-1">
+                        STT
+                    </div>
+                    <div class="col-md-5">
+                        Tên sản phẩm
+                    </div>
+                    <div class="col-md-2">
+                        Giá
+                    </div>
+                    <div class="col-md-2">
+                        Số lượng
+                    </div>
+                    <div class="col-md-2">
+                        Tổng
+                    </div>
+                </div>
+                <div class="row table-account">
+                    <div class="col-md-1">
+                        <div class="stt-account">
+                            1
+                        </div>
+                    </div>
+                    <div class="col-md-5">
+                        <div class="img-account">
+                            <img src="./images/demo.webp" alt="">
+                            <strong><a href="#">Tên sản phẩm</a></strong>
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="gia-account">
+                            10.000.000đ
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="qty-account">
+                            1
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="tong-account">
+                            30.000.000đ
+                        </div>
+                    </div>
+                </div>
+                <div class="row table-account">
+                    <div class="col-md-1">
+                        <div class="stt-account">
+                            1
+                        </div>
+                    </div>
+                    <div class="col-md-5">
+                        <div class="img-account">
+                            <img src="./images/demo.webp" alt="">
+                            <strong><a href="#">Tên sản phẩm</a></strong>
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="gia-account">
+                            10.000.000đ
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="qty-account">
+                            1
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="tong-account">
+                            30.000.000đ
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <jsp:include page="footer.jsp"></jsp:include>
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        <script src="js/app.js"></script>
     </body>
 </html>

@@ -36,7 +36,23 @@
             </c:forEach>
         </c:if>
         
-        <form action="QuantityController">
+        <c:if test="${sessionScope.ac == null}">
+            <div class="container tbao">
+                <div class="alert alert-danger" role="alert">
+                    Tiến hành đăng nhập để mua hàng
+                </div>
+            </div>
+        </c:if>
+        
+        <c:if test="${sessionScope.thongbao != null}">
+            <div class="container tbao">
+                <div class="alert alert-success" role="alert">
+                    ${sessionScope.thongbao}
+                </div>
+            </div
+        </c:if>>
+        
+        <form action="QuantityController" method="post">
             <div class="cart">
                 <div class="container">
                     <div class="table">
@@ -50,7 +66,7 @@
                         </div>
                     <c:forEach items="${listCart}" var="o">
                         <div class="about">
-                            <div class="tt">1</div>
+                            <div class="tt">${o.stt}</div>
                             <div class="ten">
                                 <div><img src="${o.image}" alt=""></div>
                                 <div><a href="DetailController?pid=${o.pid}"><p>${o.pname}</p></a></div>
@@ -81,7 +97,13 @@
             <div class="container">
                 <div class="sangphai">
                     <button type="button" class="tieptuc"><a href="ProductController?index=1">Tiếp tục mua hàng</a></button>
-                    <button type="submit" class="muahang">Tiến hành mua hàng</button>
+                    <c:if test="${sessionScope.ac != null}">
+                        <button type="submit" class="muahang">Tiến hành mua hàng</button>
+                    </c:if>
+                    <c:if test="${sessionScope.ac == null}">
+                        <button type="button" class="muahang1">Tiến hành mua hàng</button>
+                    </c:if>
+                    <button type="submit" class="muahang hide9" >Tiến hành mua hàng</button>
                 </div>
             </div>
         </form>

@@ -57,6 +57,7 @@ public class CategoryController extends HttpServlet {
         if(num%9 != 0){
             pageSize++;
         }
+        session.removeAttribute("thongbao");
         session.setAttribute("cidne", cid);
         request.setAttribute("listCL", listCL);
         request.setAttribute("listCP", listCP);

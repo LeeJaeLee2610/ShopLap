@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 import model.Account;
+import model.Cart;
 import model.Category;
 import model.Product;
 
@@ -21,6 +22,96 @@ import model.Product;
  * @author LeeJaeLee
  */
 public class DAO {
+    public void insertCart(Cart cart){
+        String sql = "insert into cart(ida, username, image, pname, amount, total)\n" +
+                    "values(?, ?, ?, ?, ?, ?)";
+        try {
+            Connection con = DatabaseHelper.getConnection();
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, cart.getIda());
+            ps.setString(2, cart.getUsername());
+            ps.setString(3, cart.getImage());
+            ps.setString(4, cart.getPname());
+            ps.setInt(5, cart.getAmount());
+            ps.setString(6, cart.getTotal());
+            ps.executeUpdate();
+        } catch (Exception e) {
+        }
+    }
+    
+    public void addInfoAccount(Cart cart){
+        String sql = "insert into info_account(username, hoten, phone, diachi, email, ghichu, res)"
+                + "values(?, ?, ?, ?, ?, ?, ?)";
+        try {
+            Connection con = DatabaseHelper.getConnection();
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, cart.getUsername());
+            ps.setString(2, cart.getHoten());
+            ps.setString(3, cart.getPhone());
+            ps.setString(4, cart.getDiachi());
+            ps.setString(5, cart.getEmail());
+            ps.setString(6, cart.getGhichu());
+            ps.setString(7, cart.getResAll());
+            ps.executeUpdate();
+        } catch (Exception e) {
+        }
+    }
+    
+    public Cart getIDA(){
+        String sql = "select top 1 * from info_account order by ida desc";
+        try {
+            Connection con = DatabaseHelper.getConnection();
+            PreparedStatement ps = con.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()){
+                return new Cart(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8));
+            }
+        } catch (Exception e) {
+        }
+        return null;
+    }
+    
+    public void deleteInfoAccount(String ida){
+        String sql = "delete from info_account where ida = ?";
+        try {
+            Connection con = DatabaseHelper.getConnection();
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, ida);
+            ps.executeUpdate();
+        } catch (Exception e) {
+        }
+    }
+    
+    public void addCart(Cart cart){
+        String sql = "insert into cart(username, image, pname, amount, total, ida)"
+                + "values(?, ?, ?, ?, ?, ?)";
+        try {
+            Connection con = DatabaseHelper.getConnection();
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, cart.getUsername());
+            ps.setString(2, cart.getImage());
+            ps.setString(3, cart.getPname());
+            ps.setInt(4, cart.getAmount());
+            ps.setString(5, cart.getTotal());
+            ps.setInt(6, cart.getIda());
+            ps.executeUpdate();
+        } catch (Exception e) {
+        }
+    }
+    
+    public void updateSLCsaukhimua(int slc, int amount, String pid){
+        String sql = "update product set slc = ? - ? where pid = ?";
+        try {
+            Connection con = DatabaseHelper.getConnection();
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, slc);
+            ps.setInt(2, amount);
+            ps.setString(3, pid);
+            ps.executeUpdate();
+        } catch (Exception e) {
+        }
+    }
+    
     public Product getProductByPID(String pid){
         String sql = "select * from product where pid = ?";
         try {

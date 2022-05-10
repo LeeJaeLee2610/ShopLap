@@ -12,6 +12,7 @@ import java.nio.charset.StandardCharsets;
 import java.util.List;
 import java.util.regex.Pattern;
 import javax.servlet.ServletException;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -66,6 +67,15 @@ public class LoginController extends HttpServlet {
         if(ok){
             HttpSession session = request.getSession();
             session.setAttribute("ac", ac);
+            session.removeAttribute("tmp");
+            Cookie a[] = request.getCookies();
+            for(Cookie o:a){
+                if(o.getName().equals("pid")){
+                    o.setValue("");
+                    o.setMaxAge(0);
+                    response.addCookie(o);
+                }
+            }
             response.sendRedirect("HomeController");
         }
         else{

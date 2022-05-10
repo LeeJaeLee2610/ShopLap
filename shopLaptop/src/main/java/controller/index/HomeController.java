@@ -14,6 +14,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import model.Product;
 
 /**
@@ -45,6 +46,8 @@ public class HomeController extends HttpServlet {
 //            tmp1.add(doubleToSring(listP.get(i).getPrice()));
 //        }
 //        request.setAttribute("tmp1", tmp1);
+        HttpSession session = request.getSession();
+        session.removeAttribute("thongbao");
         request.setAttribute("listNewP", listNewP);
         request.setAttribute("listSellingP", listSellingP);
         request.setAttribute("listLimitedP", listLimitedP);

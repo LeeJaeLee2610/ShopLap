@@ -68,6 +68,22 @@
         <servlet-name>RemoveController</servlet-name>
         <servlet-class>controller.index.RemoveController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>InfoAccountController</servlet-name>
+        <servlet-class>controller.index.InfoAccountController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>SaveTransactionController</servlet-name>
+        <servlet-class>controller.index.SaveTransactionController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>HuyController</servlet-name>
+        <servlet-class>controller.index.HuyController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ShowAccountController</servlet-name>
+        <servlet-class>controller.index.ShowAccountController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginController</servlet-name>
         <url-pattern>/LoginController</url-pattern>
@@ -135,6 +151,22 @@
     <servlet-mapping>
         <servlet-name>RemoveController</servlet-name>
         <url-pattern>/RemoveController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>InfoAccountController</servlet-name>
+        <url-pattern>/InfoAccountController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SaveTransactionController</servlet-name>
+        <url-pattern>/SaveTransactionController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>HuyController</servlet-name>
+        <url-pattern>/HuyController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ShowAccountController</servlet-name>
+        <url-pattern>/ShowAccountController</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

@@ -5,6 +5,7 @@
 package dao;
 
 import java.util.List;
+import model.Cart;
 import model.Category;
 import model.Product;
 
@@ -15,7 +16,7 @@ import model.Product;
 public class test {
     public static void main(String[] args) {
         DAO dao = new DAO();
-        Product p = dao.getProductByPID("1");
-        System.out.println(p.getPname());
+        Cart c = new Cart(3, "emcuong", "ok", "ok", 3, "1231312312321");
+        dao.insertCart(c);
     }
 }
