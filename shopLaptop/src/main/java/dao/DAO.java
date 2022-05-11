@@ -22,6 +22,100 @@ import model.Product;
  * @author LeeJaeLee
  */
 public class DAO {
+    public void addProduct(Product p){
+        String sql = "insert into product(image, pname, price, slc, tittle, description, isDiscount, discount, cid, isCate)"
+                + "values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        try {
+            Connection con = DatabaseHelper.getConnection();
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, p.getImage());
+            ps.setString(2, p.getPname());
+            ps.setString(3, p.getPriceChu());
+            ps.setInt(4, p.getSlc());
+            ps.setString(5, p.getTittle());
+            ps.setString(6, p.getDescription());
+            ps.setInt(7, p.getIsDiscount());
+            ps.setDouble(8, p.getDiscount());
+            ps.setString(9, p.getCid());
+            ps.setInt(10, p.getIsCate());
+            ps.executeUpdate();
+        } catch (Exception e) {
+        }
+    }
+    
+    public List<Product> phanTrangProductsByCID(int index, int size, String cid){
+        String sql = "with x as(select ROW_NUMBER() over (order by pid asc) as r,\n" +
+            "* from product where cid = ?)\n" +
+            "select * from x where r between ?*?-8 and ?*?";
+        List<Product> list = new ArrayList<>();
+        try {
+            Connection con = DatabaseHelper.getConnection();
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, cid);
+            ps.setInt(2, index);
+            ps.setInt(3, size);
+            ps.setInt(4, index);
+            ps.setInt(5, size);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                double tmp = rs.getDouble(5) - rs.getDouble(5) * (rs.getDouble(11) / 100);
+                list.add(new Product(rs.getInt(2), rs.getString(3), rs.getString(4), rs.getDouble(5),
+                        rs.getInt(6), rs.getInt(7), rs.getString(8), rs.getString(9), rs.getInt(10), rs.getDouble(11),
+                        formatDouble(doubleToSring(rs.getDouble(5))), tmp, formatDouble(doubleToSring(tmp)), rs.getInt(13)));
+            }
+        } catch (Exception e) {
+        }
+        return list;
+    }
+    
+    public List<Category> getAllCategorys(){
+        String sql = "select * from category";
+        List<Category> list = new ArrayList<>();
+        try {
+            Connection con = DatabaseHelper.getConnection();
+            PreparedStatement ps = con.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()){
+                list.add(new Category(rs.getInt(1), rs.getString(2), rs.getInt(3)));
+            }
+        } catch (Exception e) {
+        }
+        return list;
+    }
+    
+    public List<Cart> getInfoAccountByUsername(String username){
+        String sql = "select * from info_account where username = ?";
+        List<Cart> list = new ArrayList<>();
+        try {
+            Connection con = DatabaseHelper.getConnection();
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, username);
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()){
+                list.add(new Cart(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), 
+                rs.getString(7), rs.getString(8)));
+            }
+        } catch (Exception e) {
+        }
+        return list;
+    }
+    
+    public List<Cart> getCartByIDA(String ida){
+        String sql = "select * from cart where ida = ?";
+        List<Cart> list = new ArrayList<>();
+        try {
+            Connection con = DatabaseHelper.getConnection();
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, ida);
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()){
+                list.add(new Cart(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getInt(5), rs.getString(6)));
+            }
+        } catch (Exception e) {
+        }
+        return list;
+    }
+    
     public void insertCart(Cart cart){
         String sql = "insert into cart(ida, username, image, pname, amount, total)\n" +
                     "values(?, ?, ?, ?, ?, ?)";
@@ -99,14 +193,16 @@ public class DAO {
         }
     }
     
-    public void updateSLCsaukhimua(int slc, int amount, String pid){
-        String sql = "update product set slc = ? - ? where pid = ?";
+    public void updateSLCsaukhimua(int slc, int amount, int daban, String pid){
+        String sql = "update product set slc = ? - ?, daban = ? + ? where pid = ?";
         try {
             Connection con = DatabaseHelper.getConnection();
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setInt(1, slc);
             ps.setInt(2, amount);
-            ps.setString(3, pid);
+            ps.setInt(3, amount);
+            ps.setInt(4, daban);
+            ps.setString(5, pid);
             ps.executeUpdate();
         } catch (Exception e) {
         }

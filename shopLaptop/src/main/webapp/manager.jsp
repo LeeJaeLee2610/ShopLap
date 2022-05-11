@@ -4,6 +4,7 @@
     Author     : LeeJaeLee
 --%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -15,8 +16,27 @@
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     </head>
     <body>
-        <!--header-->
-        <jsp:include page="headerShop.jsp"></jsp:include>
+        <div class="header-area">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-8">
+                        <div class="user-menu">
+                            <ul>
+                                <li><a href="HomeController"><i class="fa-solid fa-laptop"></i>Home</a></li>
+                                <li><a href="#"><i class="fa fa-user"></i>Xin chào ${sessionScope.ac.username}</a></li>
+                                <li><a href="LogoutController"><i class="fa fa-user"></i>Logout</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <form action="SearchController1" class="search" method="get">
+                            <input type="text" placeholder="Search..." name="search">
+                            <button type="submit"><i class="fa fa-search"></i></button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
 
         <div class="btn-add-cate">
             <div class="container">
@@ -25,10 +45,9 @@
                         <div class="select-cate">
                             <label for="hienthi-cate">Category:</label>
                             <select id="hienthi-cate">
-                                <option value="volvo"><a href="#">Lenovo</a></option>
-                                <option value="saab"><a href="#">ram</a></option>
-                                <option value="opel"><a href="#">Mac</a></option>
-                                <option value="audi"><a href="#">Dell</a></option>
+                                <c:forEach items="${listC}" var='o'>
+                                    <option value="${o.cname}"><a href="CategoryManagerController?cid=${o.cid}">${o.cname}</a></option>
+                                </c:forEach>
                             </select>
                         </div>
                     </div>
@@ -70,7 +89,7 @@
             </div>
         </form>
 
-        <form action="AddController" class="form-them-sua hide1">
+        <form action="AddProductController" class="form-them-sua hide1">
             <div class="container">
                 <div class="them-sua">
                     <div>
@@ -81,11 +100,10 @@
                         </select>
                     </div>
                     <div class="gg3">
-                        <select class="chon-cate" name="chon-cate">
-                            <option value="1">Volvo</option>
-                            <option value="2">Saab</option>
-                            <option value="3">Opel</option>
-                            <option value="4">Audi</option>
+                        <select class="chon-cid" name="chon-cid">
+                            <c:forEach items="${listC}" var='o'>
+                                <option value="${o.cid}">${o.cname}</option>
+                            </c:forEach>
                         </select>
                     </div>
                     <div>
@@ -124,7 +142,7 @@
                         </select>
                         <div class="dis hide6">
                             <label for="text-discount">Giảm (%):</label>
-                            <input type="text" name="giatri-discout" id="text-discount" placeholder="Giảm">
+                            <input type="text" name="giatri-discount" id="text-discount" placeholder="Giảm">
                             <span class="form-message"></span>
                         </div>
                     </div>
@@ -271,69 +289,29 @@
                         <div>Giá tiền</div>
                         <div>Số lượng</div>
                     </div>
-                    <div class="about1">
-                        <div>1</div>
-                        <div>
-                            <img src="images/demo.webp" alt="">
+                    <c:forEach items='${listPTP}' var='o'>
+                        <div class="about1">
+                            <div>${o.stt}</div>
+                            <div>
+                                <img src="${o.image}" alt="">
+                            </div>
+                            <div>
+                                <a href="#">${o.pname}</a>
+                            </div>
+                            <div>
+                                ${o.priceChu}đ
+                            </div>
+                            <div>
+                                ${o.slc}
+                            </div>
+                            <div>
+                                <span class="ed">Edit</span>
+                            </div>
+                            <div>
+                                <a href="#">Delete</a>
+                            </div>
                         </div>
-                        <div>
-                            Tên sản phẩm
-                        </div>
-                        <div>
-                            Giá
-                        </div>
-                        <div>
-                            Số lượng
-                        </div>
-                        <div>
-                            <span class="ed">Edit</span>
-                        </div>
-                        <div>
-                            <a href="#">Delete</a>
-                        </div>
-                    </div>
-                    <div class="about1">
-                        <div>1</div>
-                        <div>
-                            <img src="images/demo.webp" alt="">
-                        </div>
-                        <div>
-                            Tên sản phẩm
-                        </div>
-                        <div>
-                            Giá
-                        </div>
-                        <div>
-                            Số lượng
-                        </div>
-                        <div>
-                            <span class="ed">Edit</span>
-                        </div>
-                        <div>
-                            <a href="#">Delete</a>
-                        </div>
-                    </div>
-                    <div class="about1">
-                        <div>1</div>
-                        <div>
-                            <img src="images/demo.webp" alt="">
-                        </div>
-                        <div>
-                            Tên sản phẩm
-                        </div>
-                        <div>
-                            Giá
-                        </div>
-                        <div>
-                            Số lượng
-                        </div>
-                        <div>
-                            <span class="ed">Edit</span>
-                        </div>
-                        <div>
-                            <a href="#">Delete</a>
-                        </div>
-                    </div>
+                    </c:forEach>
                 </div>
             </div>
         </div>
@@ -343,12 +321,9 @@
                 <div class="row">
                     <div class="pagination">
                         <a href="#">&laquo;</a>
-                        <a href="#">1</a>
-                        <a href="#">2</a>
-                        <a href="#">3</a>
-                        <a href="#">4</a>
-                        <a href="#">5</a>
-                        <a href="#">6</a>
+                        <c:forEach begin="1" end="${pageSize}" var='i'>
+                            <a href="ManagerController?index=${i}">${i}</a>
+                        </c:forEach>
                         <a href="#">&raquo;</a>
                       </div>
                 </div>

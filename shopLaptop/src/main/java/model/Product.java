@@ -42,10 +42,25 @@ public class Product {
     private String tongPChu;
     private double total;
     private String totalChu;
+    private String cid;
     
     public Product() {
     }
 
+    public Product(String image, String pname, int slc, String tittle, String description, int isDiscount, double discount, String priceChu, int isCate, String cid) {
+        this.image = image;
+        this.pname = pname;
+        this.slc = slc;
+        this.tittle = tittle;
+        this.description = description;
+        this.isDiscount = isDiscount;
+        this.discount = discount;
+        this.priceChu = priceChu;
+        this.isCate = isCate;
+        this.cid = cid;
+    }
+
+    
     public Product(int pid, String image, String pname, double price, int slc, int daban, 
             String tittle, String description, int isDiscount, double discount, String priceChu, double giamCon, String giamconChu, int isCate) {
         this.pid = pid;
@@ -333,4 +348,14 @@ public class Product {
     public void setTotalChu(String totalChu) {
         this.totalChu = totalChu;
     }
+
+    public String getCid() {
+        return cid;
+    }
+
+    public void setCid(String cid) {
+        this.cid = cid;
+    }
+    
+    
 }

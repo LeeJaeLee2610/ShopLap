@@ -20,30 +20,28 @@
         <jsp:include page="headerShop.jsp"></jsp:include>
         <!-- header end -->
         <jsp:include page="menubar.jsp"></jsp:include>
+        
+        <div class="container">
+            <div class="row">
+                <h1>Lịch sử mua hàng</h1>
+            </div>
+        </div>
+        
         <div class="donhang">
             <div class="container">
+            <c:forEach items="${info_cart}" var='o'>
                 <div class="row">
                     <div class="col-md-6 tenDH">
-                        Đơn hàng này của Em Cường nè
+                        Đơn hàng của ${o.hoten}
                     </div>
                     <div class="col-md-4 giaDH">
-                        40.000.000đ
+                        ${o.resAll}đ
                     </div>
                     <div class="col-md-2 btn-detail">
-                        <button class="btn-ct"><a href="#">Chi tiết</a></button>
+                        <button class="btn-ct"><a href="ShowAccountController?ida=${o.ida}">Chi tiết</a></button>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-md-6 tenDH">
-                        Đơn hàng này của Em Cường nè
-                    </div>
-                    <div class="col-md-4 giaDH">
-                        40.000.000đ
-                    </div>
-                    <div class="col-md-2 btn-detail">
-                        <button class="btn-ct"><a href="#">Chi tiết</a></button>
-                    </div>
-                </div>
+            </c:forEach>
             </div>
         </div>
         <div class="chitietDH">
@@ -65,62 +63,36 @@
                         Tổng
                     </div>
                 </div>
+            <c:forEach items="${list_cart}" var='o'>
                 <div class="row table-account">
                     <div class="col-md-1">
                         <div class="stt-account">
-                            1
+                            ${o.stt}
                         </div>
                     </div>
                     <div class="col-md-5">
                         <div class="img-account">
-                            <img src="./images/demo.webp" alt="">
-                            <strong><a href="#">Tên sản phẩm</a></strong>
+                            <img src="${o.image}" alt="">
+                            <strong>${o.pname}</strong>
                         </div>
                     </div>
                     <div class="col-md-2">
                         <div class="gia-account">
-                            10.000.000đ
+                            ${o.giaChu}đ
                         </div>
                     </div>
                     <div class="col-md-2">
                         <div class="qty-account">
-                            1
+                            ${o.amount}
                         </div>
                     </div>
                     <div class="col-md-2">
                         <div class="tong-account">
-                            30.000.000đ
+                            ${o.total}đ
                         </div>
                     </div>
                 </div>
-                <div class="row table-account">
-                    <div class="col-md-1">
-                        <div class="stt-account">
-                            1
-                        </div>
-                    </div>
-                    <div class="col-md-5">
-                        <div class="img-account">
-                            <img src="./images/demo.webp" alt="">
-                            <strong><a href="#">Tên sản phẩm</a></strong>
-                        </div>
-                    </div>
-                    <div class="col-md-2">
-                        <div class="gia-account">
-                            10.000.000đ
-                        </div>
-                    </div>
-                    <div class="col-md-2">
-                        <div class="qty-account">
-                            1
-                        </div>
-                    </div>
-                    <div class="col-md-2">
-                        <div class="tong-account">
-                            30.000.000đ
-                        </div>
-                    </div>
-                </div>
+            </c:forEach>
             </div>
         </div>
         <jsp:include page="footer.jsp"></jsp:include>

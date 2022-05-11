@@ -22,11 +22,11 @@
                                 <li><a href="HomeController"><i class="fa-solid fa-laptop"></i>Home</a></li>
                                 <c:if test="${sessionScope.ac.isAdmin == 0}">
                                     <c:if test="${sessionScope.ac != null}">
-                                        <li><a href="ShowAccountController?id=${sessionScope.ac.username}"><i class="fa fa-user"></i>Account</a></li>
+                                        <li><a href="InfoAccountController?username=${sessionScope.ac.username}"><i class="fa fa-user"></i>Account</a></li>
                                     </c:if>
                                 </c:if>
                                 <c:if test="${sessionScope.ac.isAdmin == 1}">
-                                    <li><a href="#"><i class="fa fa-user"></i>Product Manager</a></li>
+                                    <li><a href="ManagerController?index=1"><i class="fa fa-user"></i>Product Manager</a></li>
                                 </c:if>
                                 <c:if test="${sessionScope.ac != null}">
                                     <li><a href="#"><i class="fa fa-user"></i>Xin chào ${sessionScope.ac.username}</a></li>

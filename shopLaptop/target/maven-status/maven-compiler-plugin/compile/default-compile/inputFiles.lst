@@ -1,4 +1,5 @@
 D:\BTLWeb\shopLap\shopLaptop\src\main\java\dao\DAO.java
+D:\BTLWeb\shopLap\shopLaptop\src\main\java\controller\manager\AddProductController.java
 D:\BTLWeb\shopLap\shopLaptop\src\main\java\controller\index\CategoryLaptopController.java
 D:\BTLWeb\shopLap\shopLaptop\src\main\java\model\Category.java
 D:\BTLWeb\shopLap\shopLaptop\src\main\java\model\Product.java
@@ -7,10 +8,12 @@ D:\BTLWeb\shopLap\shopLaptop\src\main\java\controller\index\CategoryPhukienContr
 D:\BTLWeb\shopLap\shopLaptop\src\main\java\controller\signin_signup\LogoutController.java
 D:\BTLWeb\shopLap\shopLaptop\src\main\java\controller\index\AccountController.java
 D:\BTLWeb\shopLap\shopLaptop\src\main\java\dao\test.java
+D:\BTLWeb\shopLap\shopLaptop\src\main\java\controller\manager\CategoryManagerController.java
 D:\BTLWeb\shopLap\shopLaptop\src\main\java\dbHelper\DatabaseHelper.java
 D:\BTLWeb\shopLap\shopLaptop\src\main\java\controller\index\QuantityController.java
 D:\BTLWeb\shopLap\shopLaptop\src\main\java\controller\index\ShowCartController.java
 D:\BTLWeb\shopLap\shopLaptop\src\main\java\controller\index\RemoveController.java
+D:\BTLWeb\shopLap\shopLaptop\src\main\java\controller\manager\ManagerController.java
 D:\BTLWeb\shopLap\shopLaptop\src\main\java\controller\index\DetailController.java
 D:\BTLWeb\shopLap\shopLaptop\src\main\java\controller\index\HomeController.java
 D:\BTLWeb\shopLap\shopLaptop\src\main\java\controller\signin_signup\RegisterController.java

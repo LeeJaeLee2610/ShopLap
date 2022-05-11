@@ -9,6 +9,7 @@ package model;
  * @author LeeJaeLee
  */
 public class Cart {
+    private int stt;
     private int ida;
     private String username;
     private String hoten;
@@ -19,6 +20,7 @@ public class Cart {
     private String image;
     private String pname;
     private int amount;
+    private String giaChu;
     private String total;
     private String resAll;
     public Cart() {
@@ -65,6 +67,24 @@ public class Cart {
         this.pname = pname;
         this.amount = amount;
         this.total = total;
+    }
+
+    public String getGiaChu() {
+        return giaChu;
+    }
+
+    public void setGiaChu(String giaChu) {
+        this.giaChu = giaChu;
+    }
+
+    
+
+    public int getStt() {
+        return stt;
+    }
+
+    public void setStt(int stt) {
+        this.stt = stt;
     }
     
     

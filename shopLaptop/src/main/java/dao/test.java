@@ -16,7 +16,11 @@ import model.Product;
 public class test {
     public static void main(String[] args) {
         DAO dao = new DAO();
-        Cart c = new Cart(3, "emcuong", "ok", "ok", 3, "1231312312321");
-        dao.insertCart(c);
+        List<Cart> list1 = dao.getInfoAccountByUsername("cuong");
+        for(Cart c:list1){
+            System.out.println(c.getIda() + " " + c.getUsername());
+        }
+        String num = "20.000.000";
+        System.out.println(Double.parseDouble(num.replace(".", "")));
     }
 }

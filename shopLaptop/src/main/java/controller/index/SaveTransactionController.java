@@ -91,7 +91,7 @@ public class SaveTransactionController extends HttpServlet {
         }
         
         for(Product p:list){
-            dao.updateSLCsaukhimua(p.getSlc(), p.getAmount(), String.valueOf(p.getPid()));
+            dao.updateSLCsaukhimua(p.getSlc(), p.getAmount(), p.getDaban(), String.valueOf(p.getPid()));
         }
         
         List<Cart> listCart = new ArrayList<>();

@@ -4,12 +4,19 @@
  */
 package controller.index;
 
+import dao.DAO;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.math.BigDecimal;
+import java.util.List;
+import java.util.Locale;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import model.Account;
+import model.Cart;
 
 /**
  *
@@ -29,18 +36,24 @@ public class ShowAccountController extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try ( PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet ShowAccountController</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet ShowAccountController at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+        response.setCharacterEncoding("UTF-8");
+        request.setCharacterEncoding("UTF-8");
+        String ida = request.getParameter("ida");
+        DAO dao = new DAO();
+        List<Cart> list_cart = dao.getCartByIDA(ida);
+        HttpSession session = request.getSession();
+        Account account = (Account) session.getAttribute("ac");
+        List<Cart> info_cart = dao.getInfoAccountByUsername(account.getUsername());
+        for(int i = 0; i < list_cart.size(); i++){
+            list_cart.get(i).setStt(i + 1);
+            String num = list_cart.get(i).getTotal();
+            num = num.replace(".", "");
+            double tmp = Double.parseDouble(num)/list_cart.get(i).getAmount();
+            list_cart.get(i).setGiaChu(formatDouble(doubleToSring(tmp)));
         }
+        request.setAttribute("info_cart", info_cart);
+        request.setAttribute("list_cart", list_cart);
+        request.getRequestDispatcher("account.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -82,4 +95,19 @@ public class ShowAccountController extends HttpServlet {
         return "Short description";
     }// </editor-fold>
 
+    public static String formatDouble(String input) {
+        double num = Double.parseDouble(input);
+        return String.format(Locale.GERMAN, "%,.0f", num);
+    }
+
+    public static String doubleToSring(Double d) {
+        if (d == null) {
+            return null;
+        }
+        if (d.isNaN() || d.isInfinite()) {
+            return d.toString();
+        }
+
+        return new BigDecimal(d.toString()).stripTrailingZeros().toPlainString();
+    }
 }

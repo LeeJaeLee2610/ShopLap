@@ -923,7 +923,7 @@ input[type=text], textarea, input[type=password], input[type=email]{
     justify-content: center;
     flex-wrap: wrap;
     position: fixed;
-    top: 45px;
+    top: 60px;
     left: 160px;
     opacity: 1;
 }
@@ -934,7 +934,7 @@ input[type=text], textarea, input[type=password], input[type=email]{
     justify-content: center;
     flex-wrap: wrap;
     position: fixed;
-    top: 45px;
+    top: 60px;
     left: 160px;
     opacity: 1;
 }
@@ -960,7 +960,7 @@ input[type=text], textarea, input[type=password], input[type=email]{
     border-radius: 5px;
     background-color: pink;
     padding: 10px;
-    height: 650px;
+    height: 525px;
     overflow-y: scroll;
 }
 
@@ -970,7 +970,7 @@ input[type=text], textarea, input[type=password], input[type=email]{
     border-radius: 5px;
     background-color: pink;
     padding: 10px;
-    height: 650px;
+    height: 525px;
     overflow-y: scroll;
 }
 
@@ -1711,4 +1711,8 @@ form input:focus{
 
 .hide9{
     display: none;
+}
+
+.chitietDH{
+    margin-bottom: 20px;
 }

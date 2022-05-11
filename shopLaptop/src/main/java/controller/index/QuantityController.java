@@ -102,12 +102,10 @@ public class QuantityController extends HttpServlet {
             session.removeAttribute("list_tmp");
             request.setAttribute("list", list);
             request.setAttribute("totalne", formatDouble(doubleToSring(tmp)));
-            session.removeAttribute("thongbao");
             request.getRequestDispatcher("checkout.jsp").forward(request, response);
         }else{
             session.setAttribute("list1", list1);
             session.setAttribute("list_tmp", list2);
-            session.removeAttribute("thongbao");
             response.sendRedirect("ShowCartController");
         }
     }
