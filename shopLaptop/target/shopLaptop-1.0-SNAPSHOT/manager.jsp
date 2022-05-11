@@ -89,7 +89,7 @@
             </div>
         </form>
 
-        <form action="AddProductController" class="form-them-sua hide1">
+        <form action="AddProductController" class="form-them-sua hide1" method="post">
             <div class="container">
                 <div class="them-sua">
                     <div>
@@ -113,22 +113,21 @@
                     <div>
                         <label for="tensp">Tên sản phẩm:</label>
                         <input type="text" id="tensp" name="sanp" placeholder="Tên sản phẩm">
-                        <span class="form-message"></span>
+                        <span class="form-message">${mes1}</span>
                     </div>
                     <div>
                         <label for="gia">Giá (VND):</label>
                         <input type="text" id="gia" name="gia" placeholder="Giá">
-                        <span class="form-message"></span>
+                        <span class="form-message">${mes2}</span>
                     </div>
                     <div>
                         <label for="slc">Số lượng:</label>
                         <input type="text" id="slc" name="slc" placeholder="Số lượng">
-                        <span class="form-message"></span>
+                        <span class="form-message">${mes3}</span>
                     </div>
                     <div>
                         <label for="tittle1">Mô tả:</label>
                         <input type="text" id="tittle1" name="tittle1" placeholder="Mô tả">
-                        <span class="form-message"></span>
                     </div>
                     <div>
                         <label for="description1">Chi tiết:</label>
@@ -153,132 +152,17 @@
                 <div class="x"><i class="fas fa-times"></i></div>
             </div>
         </form>
-
-        <form action="EditController" class="form-them-sua1 hide2">
+                
+        <c:if test="${sessionScope.mes != null}">
             <div class="container">
-                <div class="them-sua1">
-                    <div>
-                        <label for="chon-cateID1" class="gg1">Category:</label>
-                        <select class="chon-cateID1" name="chon-cateID1">
-                            <option value="1">Laptop</option>
-                            <option value="0">Phụ kiện</option>
-                        </select>
-                    </div>
-                    <div class="gg3">
-                        <select class="chon-cate" name="chon-cate">
-                            <option value="1">Volvo</option>
-                            <option value="2">Saab</option>
-                            <option value="3">Opel</option>
-                            <option value="4">Audi</option>
-                        </select>
-                    </div>
-                    <div>
-                        <label for="photo">Chọn ảnh:</label>
-                        <input type="file" id="photo" name="photo" placeholder="Enter Image">
-                    </div>
-                    <div>
-                        <label for="tensp">Tên sản phẩm:</label>
-                        <input type="text" id="tensp" name="sanp" placeholder="Tên sản phẩm">
-                        <span class="form-message"></span>
-                    </div>
-                    <div>
-                        <label for="gia">Giá (VND):</label>
-                        <input type="text" id="gia" name="gia" placeholder="Giá">
-                        <span class="form-message"></span>
-                    </div>
-                    <div>
-                        <label for="slc">Số lượng:</label>
-                        <input type="text" id="slc" name="slc" placeholder="Số lượng">
-                        <span class="form-message"></span>
-                    </div>
-                    <div>
-                        <label for="tittle1">Mô tả:</label>
-                        <input type="text" id="tittle1" name="tittle1" placeholder="Mô tả">
-                        <span class="form-message"></span>
-                    </div>
-                    <div>
-                        <label for="description1">Chi tiết:</label>
-                        <textarea name="des" id="description1" cols="30" rows="10" placeholder="Chi tiết"></textarea>
-                    </div>
-                    <div class="info-laptop1">
-                        <div>
-                            <label for="tenmay">Tên máy:</label>
-                            <input type="text" id="tenmay" name="tenmay" placeholder="Tên máy">
-                            <span class="form-message"></span>
-                        </div>
-                        <div>
-                            <label for="ocung">Ổ cứng:</label>
-                            <input type="text" id="ocung" name="ocung" placeholder="Ổ cứng">
-                            <span class="form-message"></span>
-                        </div>
-                        <div>
-                            <label for="cpu">CPU:</label>
-                            <input type="text" id="cpu" name="cpu" placeholder="CPU">
-                            <span class="form-message"></span>
-                        </div>
-                        <div>
-                            <label for="ram">RAM:</label>
-                            <input type="text" id="ram" name="ram" placeholder="RAM">
-                            <span class="form-message"></span>
-                        </div>
-                        <div>
-                            <label for="card">Card:</label>
-                            <input type="text" id="card" name="card" placeholder="Card">
-                            <span class="form-message"></span>
-                        </div>
-                        <div>
-                            <label for="manhinh">Màn hình:</label>
-                            <input type="text" id="manhinh" name="manhinh" placeholder="Màn hình">
-                            <span class="form-message"></span>
-                        </div>
-                        <div>
-                            <label for="Trọng lượng">Trọng lượng:</label>
-                            <input type="text" id="trongluong" name="trongluong" placeholder="Trọng lượng">
-                            <span class="form-message"></span>
-                        </div>
-                        <div>
-                            <label for="hdh">Hệ điều hành:</label>
-                            <input type="text" id="trongluong" name="trongluong" placeholder="Hệ điều hành">
-                            <span class="form-message"></span>
-                        </div>
-                    </div>
-                    <div class="info-phukien1 hide4">
-                        <div>
-                            <label for="xuatxu">Xuất xứ:</label>
-                            <input type="text" id="xuatxu" name="xuatxu" placeholder="Xuất xứ">
-                            <span class="form-message"></span>
-                        </div>
-                        <div>
-                            <label for="tenpk">Tên sản phẩm:</label>
-                            <input type="text" id="tenpk" name="tenpk" placeholder="Nhập">
-                            <span class="form-message"></span>
-                        </div>
-                        <div>
-                            <label for="loai">Loại:</label>
-                            <input type="text" id="loai" name="loai" placeholder="Loại">
-                            <span class="form-message"></span>
-                        </div>
-                    </div>
-                    <div>
-                        <label for="luachon-discount1" class="gg">Giảm giá:</label>
-                        <select name="luachon-discount" class="luachon-discount1">
-                            <option value="0">No</option>
-                            <option value="1">Yes</option>
-                        </select>
-                        <div class="dis1 hide">
-                            <label for="text-discount">Giảm (%):</label>
-                            <input type="text" name="giatri-discout" id="text-discount" placeholder="Giảm">
-                            <span class="form-message"></span>
-                        </div>
-                    </div>
-                    <div class="btn-them-sua">
-                        <button class="b-sua">Sửa</button>
+                <div class="row">
+                    <div class="alert alert-success" role="alert">
+                        ${sessionScope.mes}
                     </div>
                 </div>
-                <div class="x1"><i class="fas fa-times"></i></div>
-            </div>
-        </form>
-
+            </div>               
+        </c:if>
+                                
         <div class="quanly">
             <div class="container">
                 <div class="table1">
@@ -296,7 +180,7 @@
                                 <img src="${o.image}" alt="">
                             </div>
                             <div>
-                                <a href="#">${o.pname}</a>
+                                <a href="DetailController?pid=${o.pid}">${o.pname}</a>
                             </div>
                             <div>
                                 ${o.priceChu}đ
@@ -305,10 +189,10 @@
                                 ${o.slc}
                             </div>
                             <div>
-                                <span class="ed">Edit</span>
+                                <a href="EditController?pid=${o.pid}" class="ed">Edit</a>
                             </div>
                             <div>
-                                <a href="#">Delete</a>
+                                <a href="DeleteProductController?pid=${o.pid}">Delete</a>
                             </div>
                         </div>
                     </c:forEach>

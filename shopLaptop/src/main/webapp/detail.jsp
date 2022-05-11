@@ -25,7 +25,7 @@
 
         <!-- Menu Bar -->
         <jsp:include page="menubar.jsp"></jsp:include>
-
+        
         <div class="pname">
             <div class="container">
                 <div class="row">

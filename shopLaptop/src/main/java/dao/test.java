@@ -5,6 +5,7 @@
 package dao;
 
 import java.util.List;
+import java.util.regex.Pattern;
 import model.Cart;
 import model.Category;
 import model.Product;
@@ -22,5 +23,9 @@ public class test {
         }
         String num = "20.000.000";
         System.out.println(Double.parseDouble(num.replace(".", "")));
+        String reg = "^[0-9]+";
+//        dao.updateProduct("1", "images/demo.webp", "ok", "12323234", 7, "Oidoioi", "Ok", 0, 0);
+        dao.updateInforLap("1", "ok", "ok", "ok", "ok", "ok", "ok", "ok", "ok");
+        dao.updateInforPK("32", "ok", "ok", "ok");
     }
 }

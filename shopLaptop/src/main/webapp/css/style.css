@@ -928,16 +928,6 @@ input[type=text], textarea, input[type=password], input[type=email]{
     opacity: 1;
 }
 
-.form-them-sua1 .container{
-    width: 1800px;
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    position: fixed;
-    top: 60px;
-    left: 160px;
-    opacity: 1;
-}
 
 .form-them-sua .container select{
     padding: 5px;
@@ -1005,6 +995,11 @@ input[type=text], textarea{
 .ed:hover{
     color: pink;
     cursor: pointer;
+}
+
+.form-them-sua1{
+    margin-top: 20px;
+    margin-left: 400px;
 }
 
 .hide1{
@@ -1715,4 +1710,11 @@ form input:focus{
 
 .chitietDH{
     margin-bottom: 20px;
+}
+
+.container .alert-success{
+    margin-left: 10px;
+    width: 100%;
+    margin-right: 10px;
+    z-index: -1;
 }

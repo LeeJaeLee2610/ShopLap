@@ -22,6 +22,131 @@ import model.Product;
  * @author LeeJaeLee
  */
 public class DAO {
+    public void updateInforLap(String pid, String tenmay, String ocung, String cpu, String ram, String cardDH, String manhinh, String trongluong, String hdh){
+            String sql = "update info_laptop set tenmay = ?, ocung = ?, cpu = ?, ram = ?, cardDH = ?, manhinh = ?, trongluong = ?, hdh = ? where pid = ?";
+        try {
+            Connection con = DatabaseHelper.getConnection();
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, tenmay);
+            ps.setString(2, ocung);
+            ps.setString(3, cpu);
+            ps.setString(4, ram);
+            ps.setString(5, cardDH);
+            ps.setString(6, manhinh);
+            ps.setString(7, trongluong);
+            ps.setString(8, hdh);
+            ps.setString(9, pid);
+            ps.executeUpdate();
+        } catch (Exception e) {
+        }
+    }
+    
+    public void updateInforPK(String pid, String xuatxu, String tenpk, String loai){
+        String sql = "update info_phukien set xuatxu = ?, tenpk = ?, loai = ? where pid = ?";
+        try {
+            Connection con = DatabaseHelper.getConnection();
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, xuatxu);
+            ps.setString(2, tenpk);
+            ps.setString(3, loai);
+            ps.setString(4, pid);
+            ps.executeUpdate();
+        } catch (Exception e) {
+        }
+    }
+    
+    public void updateProduct(String pid, String image, String pname, String price, int slc, String tittle, String des, int isDiscount, double discount){
+        String sql = "update product set image = ?, pname = ?, price = ?, slc = ?, tittle = ?, description = ?, isDiscount = ?, discount = ? where pid = ?";
+        try {
+            Connection con = DatabaseHelper.getConnection();
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, image);
+            ps.setString(2, pname);
+            ps.setString(3, price);
+            ps.setInt(4, slc);
+            ps.setString(5, tittle);
+            ps.setString(6, des);
+            ps.setInt(7, isDiscount);
+            ps.setDouble(8, discount);
+            ps.setString(9, pid);
+            ps.executeUpdate();
+        } catch (Exception e) {
+        }
+    }
+    
+    public void deleteProduct(String pid){
+        String sql = "delete from product where pid = ?";
+        try {
+            Connection con = DatabaseHelper.getConnection();
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, pid);
+            ps.executeUpdate();
+        } catch (Exception e) {
+        }
+    }
+    public void deleteInfoLT(String pid){
+        String sql = "delete from info_laptop where pid = ?";
+        try {
+            Connection con = DatabaseHelper.getConnection();
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, pid);
+            ps.executeUpdate();
+        } catch (Exception e) {
+        }
+    }
+    public void deleteInfoPK(String pid){
+        String sql = "delete from info_phukien where pid = ?";
+        try {
+            Connection con = DatabaseHelper.getConnection();
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, pid);
+            ps.executeUpdate();
+        } catch (Exception e) {
+        }
+    }
+    
+    public void addPIDtoInfoLT(int pid){
+        String sql ="insert into info_laptop(pid)\n" +
+            "values(?)";
+        try{
+            Connection con = DatabaseHelper.getConnection();
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, pid);
+            ps.executeUpdate();
+        } catch (Exception e) {
+        }
+    }
+    
+    public void addPIDtoInfoPK(int pid){
+        String sql = "insert into info_phukien(pid)"
+                + "values(?)";
+        try{
+            Connection con = DatabaseHelper.getConnection();
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, pid);
+            ps.executeUpdate();
+        } catch (Exception e) {
+        }
+    }
+
+    public Product getProductDB(){
+        String sql = "select top 1 * from product order by pid desc";
+        try{
+            Connection con = DatabaseHelper.getConnection();
+            PreparedStatement ps = con.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()){
+                double tmp = rs.getDouble(4) - rs.getDouble(4) * (rs.getDouble(10) / 100);
+                return new Product(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getDouble(4),
+                        rs.getInt(5), rs.getInt(6), rs.getString(7), rs.getString(8), rs.getInt(9), rs.getDouble(10),
+                        formatDouble(doubleToSring(rs.getDouble(4))), tmp, formatDouble(doubleToSring(tmp)), rs.getInt(12));
+            }
+            ps.executeUpdate();
+        } catch (Exception e) {
+        }
+        return null;
+    }
+    
     public void addProduct(Product p){
         String sql = "insert into product(image, pname, price, slc, tittle, description, isDiscount, discount, cid, isCate)"
                 + "values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";

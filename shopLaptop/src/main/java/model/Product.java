@@ -47,17 +47,17 @@ public class Product {
     public Product() {
     }
 
-    public Product(String image, String pname, int slc, String tittle, String description, int isDiscount, double discount, String priceChu, int isCate, String cid) {
+    public Product(String image, String pname, String priceChu, int slc, String tittle, String description, int isDiscount, double discount, String cid, int isCate){
         this.image = image;
         this.pname = pname;
+        this.priceChu = priceChu;
         this.slc = slc;
         this.tittle = tittle;
         this.description = description;
         this.isDiscount = isDiscount;
         this.discount = discount;
-        this.priceChu = priceChu;
-        this.isCate = isCate;
         this.cid = cid;
+        this.isCate = isCate;
     }
 
     
@@ -78,6 +78,19 @@ public class Product {
         this.giamconChu = giamconChu;
         this.isCate = isCate;
     }
+
+    public Product(String tenmay, String ocung, String cpu, String ram, String cardDH, String manhinh, String trongluong, String hdh) {
+        this.tenmay = tenmay;
+        this.ocung = ocung;
+        this.cpu = cpu;
+        this.ram = ram;
+        this.cardDH = cardDH;
+        this.manhinh = manhinh;
+        this.trongluong = trongluong;
+        this.hdh = hdh;
+    }
+    
+    
     
     public Product(int pid, String tenmay, String ocung, String cpu, String ram, String cardDH, String manhinh, String trongluong, String hdh) {
         this.pid = pid;
@@ -91,6 +104,14 @@ public class Product {
         this.hdh = hdh;
     }
 
+    public Product(String xuatxu, String tenpk, String loai) {
+        this.xuatxu = xuatxu;
+        this.tenpk = tenpk;
+        this.loai = loai;
+    }
+
+    
+    
     public Product(int pid, String xuatxu, String tenpk, String loai) {
         this.pid = pid;
         this.xuatxu = xuatxu;

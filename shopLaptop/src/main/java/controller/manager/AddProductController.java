@@ -4,12 +4,16 @@
  */
 package controller.manager;
 
+import dao.DAO;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.regex.Pattern;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import model.Product;
 
 /**
  *
@@ -32,16 +36,37 @@ public class AddProductController extends HttpServlet {
         request.setCharacterEncoding("UTF-8");
         response.setCharacterEncoding("UTF-8");
         String isCate = request.getParameter("chon-cateID");
+        int tmp2 = Integer.parseInt(isCate);
         String cid = request.getParameter("chon-cid");
         String image = "images/" + request.getParameter("photo");
         String pname = request.getParameter("sanp");
         String price = request.getParameter("gia");
-        String slc = request.getParameter("slc");
+        String sl = request.getParameter("slc");
+        int slc = Integer.parseInt(sl);
         String tittle = request.getParameter("tittle1");
         String description = request.getParameter("des");
         String isDiscount = request.getParameter("luachon-discount");
-        String discount = request.getParameter("giatri-discount");
+        int tmp = Integer.parseInt(isDiscount);
+        double tmp1 = 0;
+        if(isDiscount.equals("0")){
+            tmp1 = 0;
+        }else{
+            String discount = request.getParameter("giatri-discount");
+            tmp1 = Double.parseDouble(discount);
+        }
         
+        DAO dao = new DAO();
+        Product p = new Product(image, pname, price, slc, tittle, description, tmp, tmp1, cid, tmp2);
+        dao.addProduct(p);
+        Product p1 = dao.getProductDB();
+        if(isCate.equals("1")){
+            dao.addPIDtoInfoLT(p1.getPid());
+        }else{
+            dao.addPIDtoInfoPK(p1.getPid());
+        }
+        HttpSession session = request.getSession();
+        session.setAttribute("mes", "Thêm hàng thành công");
+        request.getRequestDispatcher("ManagerController").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -83,4 +108,8 @@ public class AddProductController extends HttpServlet {
         return "Short description";
     }// </editor-fold>
 
+    public boolean laSo(String num){
+        return Pattern.matches("^[0-9]", num);
+    }
+    
 }

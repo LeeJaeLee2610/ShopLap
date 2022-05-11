@@ -96,6 +96,18 @@
         <servlet-name>AddProductController</servlet-name>
         <servlet-class>controller.manager.AddProductController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>EditProductController</servlet-name>
+        <servlet-class>controller.manager.EditProductController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>DeleteProductController</servlet-name>
+        <servlet-class>controller.manager.DeleteProductController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>EditController</servlet-name>
+        <servlet-class>controller.manager.EditController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginController</servlet-name>
         <url-pattern>/LoginController</url-pattern>
@@ -192,6 +204,23 @@
         <servlet-name>AddProductController</servlet-name>
         <url-pattern>/AddProductController</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EditProductController</servlet-name>
+        <url-pattern>/EditProductController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DeleteProductController</servlet-name>
+        <url-pattern>/DeleteProductController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EditController</servlet-name>
+        <url-pattern>/EditController</url-pattern>
+    </servlet-mapping>
+    <welcome-file-list>
+        <welcome-file>
+            HomeController
+        </welcome-file>
+    </welcome-file-list>
     <session-config>
         <session-timeout>
             30
