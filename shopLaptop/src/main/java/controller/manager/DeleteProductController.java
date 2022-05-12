@@ -11,6 +11,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import model.Product;
 
 /**
@@ -31,6 +32,7 @@ public class DeleteProductController extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+        HttpSession session = request.getSession();
         String pid = request.getParameter("pid");
         DAO dao = new DAO();
         Product p = dao.getProductByPID(pid);
@@ -41,6 +43,7 @@ public class DeleteProductController extends HttpServlet {
             dao.deleteInfoPK(pid);
             dao.deleteProduct(pid);
         }
+        session.setAttribute("mes", "Xóa sản phẩm thành công");
         request.getRequestDispatcher("ManagerController").forward(request, response);
     }
 

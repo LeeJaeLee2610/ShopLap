@@ -11,6 +11,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import model.Product;
 
 /**
@@ -31,6 +32,7 @@ public class EditProductController extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+        HttpSession session = request.getSession();
         response.setCharacterEncoding("UTF-8");
         request.setCharacterEncoding("UTF-8");
         String pid = request.getParameter("pid");
@@ -63,6 +65,7 @@ public class EditProductController extends HttpServlet {
             String hdh = request.getParameter("hdh");
             dao.updateProduct(pid, image, pname, price, slc, tittle, description, tmp, tmp1);
             dao.updateInforLap(pid, tenmay, ocung, cpu, ram, card, manhinh, trongluong, hdh);
+            session.setAttribute("mes", "Sửa thông tin sản phẩm thành công");
             response.sendRedirect("ManagerController");
         }else{
             String image = "images/" + request.getParameter("photo");
@@ -86,6 +89,7 @@ public class EditProductController extends HttpServlet {
             String loai = request.getParameter("loai");
             dao.updateProduct(pid, image, pname, price, slc, tittle, description, tmp, tmp1);
             dao.updateInforPK(pid, xuatxu, tenpk, loai);
+            session.setAttribute("mes", "Sửa thông tin sản phẩm thành công");
             response.sendRedirect("ManagerController");
         }
     }
