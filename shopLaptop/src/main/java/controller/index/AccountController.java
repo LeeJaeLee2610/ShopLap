@@ -158,9 +158,6 @@ public class AccountController extends HttpServlet {
                 request.getRequestDispatcher("checkout.jsp").forward(request, response);
             }
             if(thanhtoan.equals("1")){
-//                for(Product p:list){
-//                    dao.updateSLCsaukhimua(p.getSlc(), p.getAmount(), String.valueOf(p.getPid()));
-//                }
                 request.setAttribute("username", username);
                 request.setAttribute("hoten", hoten);
                 request.setAttribute("phone", phone);
@@ -176,7 +173,14 @@ public class AccountController extends HttpServlet {
                 request.getRequestDispatcher("info_account.jsp").forward(request, response);
             }
             else{
-                request.getRequestDispatcher("HomeController").forward(request, response);
+                request.setAttribute("username", username);
+                request.setAttribute("hoten", hoten);
+                request.setAttribute("phone", phone);
+                request.setAttribute("diachi", diachi);
+                request.setAttribute("email", email);
+                request.setAttribute("ghichu", ghichu);
+                request.setAttribute("totalne", formatDouble(doubleToSring(tmp)));
+                request.getRequestDispatcher("checkout1.jsp").forward(request, response);
             }
         }
         else{
@@ -190,7 +194,7 @@ public class AccountController extends HttpServlet {
             request.setAttribute("mes7", mes7);
             request.setAttribute("list", list);
             session.setAttribute("ac1", ac);
-            request.setAttribute("totalne", formatDouble(doubleToSring(tmp)));
+            request.setAttribute("totalne", tmp);
             request.getRequestDispatcher("checkout.jsp").forward(request, response);
         }
     }

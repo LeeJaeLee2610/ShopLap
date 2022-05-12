@@ -9,7 +9,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>PLap</title>
     </head>
     <body>
         <div class="footer" id="footer">
@@ -35,7 +35,10 @@
                         </div>
                     </div>
                     <div class="col-md-3">
-                        <h3>Quảng cáo bằng VD</h3>
+                        <h3>Quảng cáo</h3>
+                        <video controls>
+                            <source src="images/quangcao.mp4" type="video/mp4">
+                        </video>
                     </div>
                 </div>
             </div>

@@ -18,9 +18,11 @@ D:\BTLWeb\shopLap\shopLaptop\src\main\java\controller\index\ShowCartController.j
 D:\BTLWeb\shopLap\shopLaptop\src\main\java\controller\index\RemoveController.java
 D:\BTLWeb\shopLap\shopLaptop\src\main\java\controller\manager\ManagerController.java
 D:\BTLWeb\shopLap\shopLaptop\src\main\java\controller\index\DetailController.java
+D:\BTLWeb\shopLap\shopLaptop\src\main\java\model\OrderDetail.java
 D:\BTLWeb\shopLap\shopLaptop\src\main\java\controller\index\HomeController.java
 D:\BTLWeb\shopLap\shopLaptop\src\main\java\controller\signin_signup\RegisterController.java
 D:\BTLWeb\shopLap\shopLaptop\src\main\java\controller\index\ProductPhukienController.java
+D:\BTLWeb\shopLap\shopLaptop\src\main\java\model\PaymentServices.java
 D:\BTLWeb\shopLap\shopLaptop\src\main\java\controller\index\HuyController.java
 D:\BTLWeb\shopLap\shopLaptop\src\main\java\model\Cart.java
 D:\BTLWeb\shopLap\shopLaptop\src\main\java\controller\index\InfoAccountController.java
@@ -31,4 +33,5 @@ D:\BTLWeb\shopLap\shopLaptop\src\main\java\controller\index\ProductLaptopControl
 D:\BTLWeb\shopLap\shopLaptop\src\main\java\controller\signin_signup\LoginController.java
 D:\BTLWeb\shopLap\shopLaptop\src\main\java\controller\index\SaveTransactionController.java
 D:\BTLWeb\shopLap\shopLaptop\src\main\java\controller\index\SearchController1.java
+D:\BTLWeb\shopLap\shopLaptop\src\main\java\controller\paypal\AuthorizePaymentServlet.java
 D:\BTLWeb\shopLap\shopLaptop\src\main\java\controller\index\ShowAccountController.java
