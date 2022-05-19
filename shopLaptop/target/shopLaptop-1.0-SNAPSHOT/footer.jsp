@@ -36,8 +36,8 @@
                     </div>
                     <div class="col-md-3">
                         <h3>Quảng cáo</h3>
-                        <video controls>
-                            <source src="images/quangcao.mp4" type="video/mp4">
+                        <video height="70%" width="100%" controls>
+                            <source src="./quangc.mp4" type="video/mp4">
                         </video>
                     </div>
                 </div>

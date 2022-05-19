@@ -31,7 +31,7 @@
                 </div>
                 <div>
                     <label for="password1">Nhập lại mật khẩu: </label>
-                    <input type="password" name="password1" id="password1" placeholder="password" onfocus="this.value = ''"><br>
+                    <input type="password" name="password1" id="password1" placeholder="Nhập lại password" onfocus="this.value = ''"><br>
                     <span class="form-message invalid">${mes4}</span><br>
                 </div>
                 <div id="btn-form">
